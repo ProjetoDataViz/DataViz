@@ -1,0 +1,6 @@
+#Alterações até então nas pastas do modelo de quarto websiate ALA LABS
+
+Primeiro em reunião tiramos diversos carregamentos de páginas dentro do site
+Excluímos diversos posts deixando apenas 1, iremos substituir.
+
+criação da pasta imagens pra alterar algumas Questões
