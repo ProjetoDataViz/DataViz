@@ -2,7 +2,7 @@
 toc: false
 format: 
   html: 
-    include-in-header: hero-image.html
+    #include-in-header: hero-image.html
     include-after-body: _footer.html
     sidebar: false
     anchor-sections: false
@@ -74,7 +74,7 @@ Feito por [Guilherme Veloso](http://lattes.cnpq.br/7520289716113534) Orientador 
 
 <a href="posts/index.qmd">
 
-![](Imagens/work1.png){.home-img}
+![](Imagens/Post_W.png){.home-img}
 
 </a>
 
@@ -134,7 +134,7 @@ tags$div(class = "category-row",
   
   )
 ```
-# Encerrado
+
 
 :::
 
@@ -152,7 +152,7 @@ tags$div(class = "category-row",
 :::
 
 :::{.home-column-text .col-left}
-
+# Encerrado
 <center> <h1 class="heading-home">Research</h1>
 
 <span style = "font-style: italic">Highlighting research supported by ALA data</span>

@@ -18,8 +18,8 @@ website:
   favicon: images/favicon.ico
   draft-mode: unlinked
   navbar:
-    background: "#222322"
-    foreground: "#FFFFFF"
+    background: "#91C2E6"
+    foreground: "#222322"
     title: "DataViz"
     search: true
     logo: Imagens/dataviz.png
