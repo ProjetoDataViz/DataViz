@@ -1,0 +1,629 @@
+---
+title: "Gráficos e Mapas Interativos no R"
+author: 
+  - name: "Ana Li"
+  - name: "Gabriel Gonçalves "
+output:
+  html_document:
+    includes:
+      before_body: 'header.html'
+    theme: 
+      bg : '#ffffff'  
+      fg : '#09094f'   
+      primary : '#c6d7e5'
+      secondary: '#c6d7e5'
+    toc: yes
+    toc_float:
+      collapsed: true
+    df_print: paged
+---
+
+```{=html}
+<style>
+.sidebar-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+</style>
+```
+
+::: sidebar-footer
+<strong>Orientador:</strong> Rafael Erbisti
+:::
+
+```{=html}
+<style>
+/* Container principal - centraliza tudo */
+.title-container {
+  text-align: center;
+  margin: 0 auto 30px auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Título */
+h1.title {
+  color: #2c3e50;
+  text-align: center !important;
+  margin-bottom: 10px !important;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Autor */
+.author {
+  display: block;
+  text-align: center !important;
+  font-style: italic;
+  color: #7f8c8d;
+  margin-bottom: 5px !important;
+}
+
+/* Data */
+.date {
+  display: block;
+  text-align: center !important;
+}
+</style>
+```
+
+```{r knitr_init, echo=FALSE, cache=FALSE, warning=FALSE, include = FALSE}
+library(knitr)
+library(rmdformats)
+library(tidyverse)
+ 
+ ## Global options
+options(max.print="75")
+opts_chunk$set(cache=TRUE,
+                prompt=FALSE,
+                tidy=TRUE,
+                comment=NA,
+                message=FALSE,
+                warning=FALSE)
+opts_knit$set(width=75)
+
+
+```
+
+# **Interatividade nos gráficos feitos pelo ggplot**
+
+As bases e gráficos usados abaixo foram retirados da segunda oficina.
+
+```{r bibliotecas}
+library(tidyverse)
+library(plotly)
+
+performance = read_csv('bases/student_habits_performance.csv')
+performance = performance %>% filter(gender!='Other')
+
+
+```
+
+O `ggplotly()` é uma função do pacote `plotly` que converte um gráfico criado com ggplot2 em um gráfico interativo do Plotly.
+
+Principais parâmetros do ggplotly():
+
+-   `p` : O objeto ggplot que será convertido para Plotly.
+
+-   `tooltip` : Define quais variáveis aparecerão no tooltip (dica de informação ao passar o mouse).
+
+-   `dynamicTicks` : Se TRUE, os eixos se ajustam dinamicamente ao zoom.
+
+Peguemos de exemplo um gráfico feito na segunda oficina do projeto DataViz.
+
+```{r ggplotly}
+graf1 = performance %>% 
+  ggplot(aes(x = study_hours_per_day, y = exam_score, color = gender)) +
+  geom_point(alpha = 0.5)+
+  geom_smooth(method='lm',se = F)+
+  scale_y_continuous(breaks = seq(0, 100, 20))+
+  scale_color_manual(values = c("Red","Blue"),
+                     labels = c("Mulher","Homem"))+ # mudando o nome das categorias
+  labs(x = "Horas de Estudo Diário", y = "Nota" ,color = "" ,
+       title = "Relação entre Horas de Estudo e Nota",
+       subtitle = "Student Habits vs Academic Performance: A Simulated Study",
+       caption = "Fonte: https://www.kaggle.com/datasets") +
+  theme_classic()
+
+graf1
+
+ggplotly(graf1)
+```
+
+Perceba que detalhes como subtítulo, a legenda e os textos estão diferentes. Quando a função `ggplotly()` é utilizada, nem todas as modificações feitas anteriormente serão mantidas.
+
+Uma forma de solucionar esse problema é usando a função `layout()` do `plotly` que controla o aspecto geral do gráfico, como títulos, eixos, legendas, margens e anotações.
+
+
+
+```{r}
+# transformando os dados antes de plotar
+
+performance = performance %>%
+  mutate(gender = case_when(
+    gender == "Female" ~ "Mulher",
+    gender == "Male" ~ "Homem",
+    TRUE ~ as.character(gender)
+  ))
+
+# gráfico modificado
+
+graf1_mod = performance %>% 
+    ggplot(aes(x = study_hours_per_day, y = exam_score, color = gender)) +
+    geom_point(alpha = 0.5,
+               aes(text = paste0("Horas de Estudo: ", study_hours_per_day, 
+                                 "<br>",
+                                 "Nota: ", exam_score,
+                                 "<br>",
+                                 "Sexo: ", gender,
+                                 "<br>",
+                                 "Horas de Sono: ", sleep_hours)))+
+    geom_smooth(method='lm',se = F)+
+    scale_y_continuous(breaks = seq(0, 100, 20))+
+    scale_color_manual(values = c("Red","Blue"))+ # mudando o nome das categorias
+    labs(x = "Horas de Estudo Diário", y = "Nota" ,color = "" ,
+         title = "Relação entre Horas de Estudo e Nota") +
+    theme_classic()
+
+ggplotly(graf1_mod, 
+         tooltip = "text",# a informação do hover será a do text do geom_point
+         dynamicTicks = TRUE)%>% # ajuste dos eixos 
+  layout(hoverlabel=list(bgcolor = "#ffffff"), # definindo cor do fundo do hover
+         title = "<b>Relação entre Horas de Estudo e Nota</b><br><sub>Student Habits vs Academic Performance: A Simulated Study</sub>", # título e subtítulo
+          legend = list( 
+            title = list(text = "Sexo"), # título da legenda
+            x = 0.8,  # posição da legenda no layout
+            y = 0.1,
+            orientation = "v" # categorias na vertical
+          )
+        ) 
+
+```
+
+# **Leitura e manipulação de arquivos shapefile**
+
+Shapes são arquivos que contém coordenadas geográficas que podem ser transformadas em mapas. Esses arquivos podem ser retirados do site do Instituto Brasileiro de Geografia e Estatística (IBGE) ou do pacote `geobr` por exemplo.
+
+Para importar shapefile, utiliza-se a função `st_read()` do pacote `sf`. Para que a leitura do arquivo shapefile funcione corretamente, todos os arquivos auxiliares devem estar na mesma pasta do diretório.
+
+-   **.shp** - O arquivo que armazena a geometria dos elementos (obrigatório);
+
+-   **.shx** - O índice da geometria dos elementos (obrigatório);
+
+-   **.dbf** - A tabela de atributos em formato dBASE, que contém informações descritivas dos elementos (obrigatório);
+
+-   Outros arquivos opcionais podem fornecer informações adicionais como projeção e codificação de caracteres.
+
+```{r shapefile}
+if(!require("sf")) install.packages("sf")
+library(sf)
+
+#lendo o shapefile dos municípios do Rio de Janeiro
+RJshape = st_read('shapes/RJ_Municipios_2024/RJ_Municipios_2024.shp', options = "ENCODING=UTF-8")
+
+```
+
+```{r, eval=FALSE}
+# Forma alternativa:
+
+if(!require("geobr")) install.packages("geobr")
+library(geobr)
+
+RJshape = read_municipality(code_muni = "RJ", year = 2024)
+
+# Filtrar apenas Niterói:
+
+nit_shape <- RJshape %>% 
+  filter(name_muni == "Niterói")
+```
+
+
+# **Criação de mapas com ggplot2 e geom_sf**
+
+Existem diversas maneiras de criar mapas no R, uma delas é através da função `geom_sf()` do pacote `ggplot2`. A função detecta a informação geométrica dos objetos `sf` para desenhar o mapa.
+
+```{r mapa vazio}
+# lendo o shapefile dos bairros de Niterói
+bairros = st_read('shapes/BairrosNit/Limite_de_Bairros.shp')
+
+# Mapa vazio
+ggplot(bairros)+
+  geom_sf()
+```
+
+## **Transformação de coordenadas**
+
+Os dados espaciais podem vir em diversos sistemas de referência de coordenadas (CRS). Então, até mesmo antes de plotar os mapas, precisamos verificar se as coordenadas dos dados possuem o mesmo CRS. Caso contrário, as coordenadas precisam ser transformadas para evitar problemas de desalinhamento, distorção, erros de projeção,etc.
+
+A função utilizada para transformar coordenadas é ``st_transform()``. Basta inserir o objeto ``sf`` e o ``crs`` de interesse como argumentos da função.
+
+```{r transformar pontos}
+# lendo pontos 
+escolas = read_csv('bases/Escolas_Municipais_de_Ensino_Fundamental.csv') 
+escolas
+
+
+# criando objeto sf com as coordenadas em UTM
+pontos_utm = st_as_sf(
+  escolas, # 
+  coords = c("X", "Y"),
+  crs = 31983 # EPSG
+)
+
+#transformando dados em UTM para lat/long
+pontos_latlong = st_transform(pontos_utm, crs = 4674)
+
+#matriz com coordenadas
+coordenadas = st_coordinates(pontos_latlong) 
+
+#adicionando colunas com as coordenadas no data.frame pontos_nit
+pontos_nit = escolas %>% mutate(LONGITUDE = coordenadas[,1],
+                                       LATITUDE = coordenadas[,2])
+
+
+
+```
+
+## **Mapa de pontos**
+
+É possível apresentar mais de uma informação geométrica em um único mapa. Existem duas formas de plotar os pontos no mapa:
+
+-   `geom_sf()` com o objeto sf
+
+-   `geom_point()` com as coordenadas nos eixos
+
+```{r mapa pontos 1}
+# filtrando apenas o município de Niterói
+nit_shape =  RJshape %>% 
+  filter(NM_MUN == "Niterói")
+
+# com geom_point():
+
+ggplot(nit_shape)+
+  geom_sf()+
+  geom_point(data = pontos_nit,aes(x = LONGITUDE, y = LATITUDE))+
+  theme_minimal()
+
+ggplot(bairros)+
+  geom_sf()+
+  geom_point(data = pontos_nit,aes(x = X, y = Y))+
+  theme_minimal()
+
+```
+
+> Perceba que ao usar nit_shape (que está em graus) os pontos são mapeados através das colunas LONGITUDE e LATITUDE que correspondem às coordenadas em graus. Quando usamos bairros, os pontos são mapeados através de X e Y que correpondem às coordenadas UTM. 
+
+```{r mapa pontos 2}
+# com geom_sf():
+ggplot()+
+  geom_sf(data = bairros)+ 
+  geom_sf(data = pontos_utm) +
+  theme_minimal()
+
+```
+
+A forma de modificar a estética do mapa é a mesma para todos os `geoms`.
+
+```{r mapa pontos 3}
+
+ggplot()+
+  geom_sf(data = bairros,fill='white')+ # plotagem do município de Niterói
+  geom_sf(data = pontos_utm, # plotagem dos pontos
+          aes(col=tx_turno))+ # pontos coloridos de acordo com o turno
+  facet_wrap(~tx_regiao)+ # facetas por região
+  labs(color = 'Turno')+
+  theme_minimal()+
+  theme(legend.position = 'bottom') # legenda para baixo
+
+```
+
+## **Mapa Coroplético**
+
+Para apresentar observações de uma variável de interesse em uma determinada área, é preciso integrar as informações da variável com a geometria do shapefile através de um `_join`. Como a base inicial é o shape, a base resultante precisa ter as mesmas linhas. A variável **link**, que pode ser o nome ou código do local, tem que estar presente em ambas as bases e precisa ser de classes iguais.
+
+```{r}
+# lendo a base de taxa de mortalidade bruta no RJ
+taxaRJ = read_csv2('bases/taxa_mortRJ.csv',locale = locale(encoding = "latin1"))
+
+# juntando as duas bases para formar um único objeto sf
+taxa_shape = RJshape %>% left_join(taxaRJ,by = c('NM_MUN'='Município'))
+
+```
+
+Com a base integrada pronta, é possível plotar o mapa coroplético.
+
+```{r coropletico1}
+# taxa de mortalidade por município RJ
+taxa_shape %>% 
+  ggplot(aes(fill=Total)) +
+  geom_sf()+
+  labs(fill = 'Taxa')
+```
+
+De forma análoga aos gráficos vistos na segunda oficina, é possível personalizar as cores dos polígonos dos mapas com funções `scale_fill_`. No entanto, para inserir textos, de acordo com objetos `sf`, utilize as funções `geom_sf_text()` ou `geom_sf_label()` ao invés do `geom_text()`.
+
+
+```{r coropletico2}
+# taxa de mortalidade por município RJ
+taxa_shape %>% 
+  ggplot(aes(fill=Total)) +
+  geom_sf()+
+  scale_fill_gradient(name = "Taxa", 
+                      low = "white",  # gradiente manual
+                      high = "red")+
+  theme_minimal()
+
+
+taxa_shape %>% 
+  ggplot(aes(fill=Total)) +
+  geom_sf()+
+  scale_fill_viridis_c(name='Taxa',
+                       option = "magma", # paletas modernas para variaveis contínuas
+                       direction= -1)+ # invertendo a ordem das cores
+  theme_minimal()
+
+
+taxa_shape %>% 
+  ggplot(aes(fill=Total)) +
+  geom_sf()+
+  scale_fill_distiller(name = 'Taxa',
+                       palette = "Blues",  # paletas pré-definidas
+                       trans = "reverse")+ # invertendo os valores
+  theme_minimal()
+
+
+```
+
+
+# **Criação de mapas com tmap**
+
+Outra forma de fazer mapas temáticos no R é usando as funções do pacote `tmap`. Este pacote, além de criar mapas estáticos, também é utilizado parar criar mapas interativos. As funções possuem uma sintaxe simples, similar ao `ggplot2`.
+
+```{r}
+# Instalando e carregando o pacote tmap
+if(!require("tmap")) install.packages("tmap")
+library(tmap)
+
+```
+
+Para plotar um mapa utilizando `tmap`, as funções essenciais são:
+
+-   `tm_shape()` : Define a camada espacial a ser utilizada para plotar o mapa. O argumento deverá ser uma base de dados com informação geoespacial.
+
+-   `tm_polygon()` : Define os limites e preenche os polígonos.
+
+-   `tm_borders()` : Adiciona as bordas do mapa.
+
+-   `tm_fill()` : Peenche a cor dos polígonos sem adição da borda.
+
+```{r tm}
+# Mapa inicial
+tm_shape(shp = taxa_shape)+
+  tm_polygons()
+
+# Outra maneira de plotar o mesmo mapa
+tm_shape(shp = taxa_shape)+ 
+  tm_fill()+
+  tm_borders()
+
+```
+
+## **Mapas Coropléticos com `tmap`** 
+
+```{r tmap coropletico1}
+tm_shape(shp = taxa_shape)+ 
+  tm_fill(col='Total',palette = 'Reds')+
+  tm_borders()
+
+```
+
+Existem várias formas (automáticas ou manuais) para preencher um mapa. Dentro da função utilizada para colorir o mapa, é possível utilizar os seguintes argumentos para customizá-lo da maneira que preferir:
+
+-   `style = pretty` : Configuração padrão da função. Arredonda os limites dos intervalos para números inteiros;
+
+-   `style = equal` : Divide a variável em intervalos de comprimentos iguais;
+
+-   `style = quantile` : Divide a variável em quantis;
+
+-   `style = jenks` : Identifica grupos com valores semelhantes e maximiza a diferença entre eles;
+
+-   `style = cont` : Exibe várias cores em uma paleta contínua;
+
+-   `style = cat` : Colore cada categoria individualmente para dados categóricos;
+
+-   `n` : Define o número de intervalos;
+
+-   `breaks` : Forma manual de definir os intervalos.
+
+```{r styles}
+
+equal = tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds',style='equal')
+
+quantile = tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds',style='quantile')
+
+jenks = tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds',style='jenks')
+
+cont = tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds',style='cont')
+
+n = tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds', n = 4)
+
+breaks = tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds',breaks = c(0,3,6,9,max(taxa_shape$Total)))
+
+tmap_arrange(equal,quantile,jenks,cont,n,breaks, ncol =3)
+
+```
+
+Outras funções úteis do `tmap` para detalhar os mapas:
+
+- tm_lines(): Adiciona linhas ao mapa
+
+- tm_dots(): Adiciona pontos ao mapa
+
+- tm_text(): Adiciona rótulos de texto 
+
+- tm_layout(): Personaliza o layout geral 
+
+- tm_legend(): Controla a aparência da legenda
+
+- tm_scale_bar(): Adiciona uma barra de escala 
+
+- tm_compass(): Adiciona uma rosa dos ventos
+
+- tm_bubbles(): Adiciona uma camada de bolhas 
+
+```{r outras funcoes tmap}
+# Exemplo de mapa com alguma das funções acima
+tm_shape(shp = taxa_shape)+
+  tm_fill(col = c("Feminino","Masculino"),
+          palette = 'Blues')+
+  tm_borders()+
+  tm_layout(panel.labels = c("Feminino","Masculino"))+
+  tm_compass()+
+  tm_scale_bar()+
+  tm_layout(title = 'Taxa de mortalidade no RJ',
+            legend.position = c("left","top"))
+
+
+# Com escalas iguais
+tm_shape(shp = taxa_shape)+
+  tm_fill(col = c("Feminino","Masculino"),
+          palette = 'Blues',
+          title='Taxa')+
+  tm_borders()+
+  tm_layout(panel.labels = c("Feminino","Masculino"))+
+  tm_facets(free.scales = FALSE) +
+  tm_compass()+
+  tm_scale_bar()+
+  tm_layout(legend.position = c("left","top"))
+
+
+
+```
+
+## **Interatividade com `tmap_mode()`** 
+
+Para ativar interatividade em um mapa feito com o pacote `tmap`,basta utilizar o comando `tmap_mode("view")`. Caso prefira retornar ao modo estático, use `tmap_mode("plot")`.
+
+```{r interatividade tmap}
+# Modo interativo:
+tmap_mode("view")
+
+# Especificando as informações que aparecem nos popups
+tm_shape(shp = taxa_shape)+ 
+  tm_borders(col='gray10')+
+  tm_fill(col='Total',palette = 'Reds',style='cont',title= 'Taxa',
+          popup.vars = c('Município'='NM_MUN',
+                         'Taxa total'='Total',
+                         'Taxa feminina'='Feminino',
+                         'Taxa masculina'='Masculino',
+                         'Área(km2)'='AREA_KM2'),
+          id = "NM_MUN")+
+  tm_layout(title = 'Taxa de mortalidade no RJ')
+
+# Voltando ao modo estático
+tmap_mode('plot')
+```
+
+# **Criação de mapas com Leaflet**
+
+O pacote ``leaflet`` permite criar mapas dinâmicos e interativos no R. A construção dos mapas é feita em camadas com a utilização do operador pipe `%>%`. Primeiro, instale e carregue a biblioteca.
+
+```{r instalacao leaflet}
+if(!require("leaflet")) install.packages("leaflet")
+library(leaflet)
+```
+
+A estrutura inicial será a função ``leaflet()`` que prepara a interface vazia do mapa e em seguida virá ``addTiles()`` que adiciona a camada base com referências visuais (como ruas e bairros) além de permitir zoom e navegação pelo mapa.
+
+Para delimitar um espaço, pode-se utilizar ``addPolygons()`` e inserir o objeto sf como argumento.
+
+> Observação: Segundo a [documentação](https://rstudio.github.io/leaflet/articles/projections.html), as bases precisam fornecer dados em WGS 84 longitude/latitude para marcadores,círculos, polígonos e linhas.
+
+
+```{r leaflet}
+#transformando o crs 
+bairros_wgs84 = st_transform(bairros, crs = 4326)
+
+#plotando o mapa com leaflet
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = bairros_wgs84, # objeto sf com polígonos
+              weight = 1, # grossura das bordas em pixels
+              opacity = 0.5, # transparência das bordas
+              fillOpacity = 0.2, # transparência do preenchimento
+              color = "red") # cor dos polígonos e das bordas
+```
+
+## **Pontos de Interesse**
+
+Para adicionar pontos de interesse, podemos inserir como argumento o objeto sf com a informação dos pontos nas seguintes funções:
+
+- ``addMarkers()`` : Adiciona marcadores com ícones;
+
+- ``addCircleMarkers()`` : Adiciona marcadores em círculos com cores e tamanho modificáveis.
+
+```{r pontos interesse}
+# Mapa com as escolas em marcadores
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = bairros_wgs84,
+              weight = 1,
+              opacity = 0.5,
+              fillOpacity = 0.2,
+              color = "red") %>% 
+  addMarkers(data = pontos_nit)
+
+# Mapa com as escolas em círculos
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = bairros_wgs84,
+              weight = 1,
+              opacity = 0.5,
+              fillOpacity = 0.2,
+              color = "red") %>% 
+  addCircleMarkers(data = pontos_latlong,
+                   radius= 5,
+                   color = "blue")
+
+```
+
+## **Configurando pop ups e labels**
+
+As informações importantes sobre algum ponto ou região podem ser inseridas dentro do mapa através dos pop ups (aparecem quando clicam em um ponto,polígono,marcador,etc) e/ou dos labels (aparecem ao passar o mouse em cima da geometria).
+
+```{r}
+leaflet() %>% 
+  addTiles() %>% 
+  addPolygons(data = bairros_wgs84,
+              weight = 1,
+              opacity = 0.5,
+              fillOpacity = 0.2,
+              color = "red",
+              label = ~paste('Bairro:',tx_nome), # informação quando passar o mouse no polígono
+              popup = ~paste('Bairro:',tx_nome,'<br>', 
+                             'Área:',Shape__Are,'<br>', # informação quando clicar no polígono
+                             'Comprimento:',Shape__Len)) %>% 
+  addCircleMarkers(data = pontos_latlong,
+                   radius = 5,
+                   color = "blue",
+                   label = ~paste('Escola:',tx_escola), # informação quando clicar no círculo
+                   popup = ~paste('Turno:',tx_turno,'<br>', # informação quando clicar no círculo
+                                  'Modalidade:',tx_modalidade))
+
+```
+

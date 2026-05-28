@@ -3,7 +3,7 @@ toc: false
 format: 
   html: 
     include-in-header: hero-image.html
-    include-after-body: _footer.html
+    #include-after-body: _footer.html
     sidebar: false
     anchor-sections: false
     css: [theme.css, index.css]
@@ -28,7 +28,7 @@ source("R/functions.R")
 
 # DataViz
 
-Projeto voltado a visualização de dados no curso de [Estatística](https://estatistica.uff.br) - UFF. 
+O projeto DataViz UFF é uma iniciativa que promove o ensino e a disseminação de conhecimentos sobre visualização de dados, com o objetivo de capacitar estudantes a interpretar e comunicar informações de forma clara e visualmente impactante. Todas as disciplinas oferecidas pelo [Departamento de Estatística](https://estatistica.uff.br) com carga horária prática envolvem também análise de informações que necessitam de visualização adequada. Nesse sentido, o DataViz UFF visa fortalecer a instrumentalização em visualização de dados na linguagem R, integrando práticas pedagógicas e tecnológicas para transformar dados complexos em representações gráficas compreensíveis.
 
 <br>
 
@@ -55,11 +55,11 @@ Projeto voltado a visualização de dados no curso de [Estatística](https://est
 <h1 class="heading-home">Data <img src="Imagens/dataviz.png" class="lens-logo"></img> Viz</h1>
 </a>
 
-<span> Projeto de Monitoria da [Estatística](https://estatistica.uff.br) voltada para a matéria de Visualização de Dados(Get-00100) com o objetivo de mostra a funcionalidade da ferramenta Quarto para website, utilizando R.</span><br>
+<span> Projeto de Monitoria da [Estatística](https://estatistica.uff.br) voltada para a matéria de Visualização de Dados(Get-00234) com o objetivo de mostra a funcionalidade da ferramenta Quarto para website, utilizando R.</span><br>
 
 Feito por [Guilherme Veloso](http://lattes.cnpq.br/7520289716113534) Orientador e [Leonardo Vinicius](https://www.linkedin.com/in/leonardo-vinicius-dos-santos-ramos/) Aluno do [Curso de Graduação em Estatística](https://estatistica.uff.br){style="font-face:italic;"}<br>
 
-<span style="font-size:.7rem; color:#a7abb4;">Images (all CC-BY-NC): Kai Squires, andrewpavlov, mikegrow, kerrbrad, Matt Campbell, Toby Esplin, darcywhittaker</span>
+<span style="font-size:.7rem; color:#a7abb4;">Imagens usadas são totalmente altorais do Departamento de Estatística da UFF</span>
 
 </center>
 
@@ -102,7 +102,7 @@ tags$div(class = "category-row",
   tags$h4(style = "text-align:center;",
       tags$a(
         class = "white",
-        href = "posts/index.html#category=Summaries", "Summaries"))),
+        href = "posts/index.html#category=Summaries", "Gráficos"))),
   
   tags$div( 
     class = "category-column",
@@ -116,21 +116,21 @@ tags$div(class = "category-row",
   tags$h4(style = "text-align:center",
       tags$a(
         class = "white",
-        href = "posts/index.html#category=Maps", "Maps"))),
+        href = "posts/index.html#category=Maps", "Mapas"))),
   
   tags$div( 
     class = "category-column",
     tags$a(href = "posts/index.html#category:Trees",
       tags$img(
         href = "posts/index.html#category=Trees",
-        src = "Imagens/graphs.png",
+        src = "Imagens/database-management.svg",
         style = "color:#fff !important;",
         class = "category-image honey-white"
   )),
   tags$h4(style = "text-align:center",
       tags$a(
         class = "white",
-        href = "posts/index.html#category=Trees", "Trees")))
+        href = "posts/index.html#category=Trees", "manipulation")))
   
   )
 ```
@@ -257,87 +257,4 @@ tags$div(class = "category-row",
 :::{.column-screen style="background-color:#ffffff;"}
 :::{.column-screen-inset}
 :::{.home-column-image .col-left}
-
-<center> <h1 class="heading-home" style="color: #222322;">Books</h1>
-
-<span style = "font-style: italic;">Long-form resources by the Science & Decision Support Team</span>
-
-</center>
-
-```{r, echo = FALSE}
-tags$div(class = "category-row",
-  
-  tags$div( 
-    class = "category-column",
-    style = "width: 100%",
-    tags$a(href = "books/index.html",
-      tags$img(
-        href = "books/index.html",
-        src = "images/vectors/book-solid.svg",
-        class = "category-image honey"
-  )),
-  tags$h4(style = "text-align:center;",
-      tags$a(
-        href = "books/index.html", "Books"))
-  
-  ))
-```
-
-:::
-
-:::{.home-column-text .col-right}
-
-<center>
-<a href="https://labs.ala.org.au/books/index.html">
-
-![](books/images/covers/cleaner-shrimp_cover.png){.home-img-transparent width=45% style="border-radius:2%;"}
-
-</a>
-</center>
-
-:::
-:::
-:::
-
-***
-
-:::{.column-screen style="background-color:#fff;"}
-
-:::{.column-page}
-
-<center> <h1>{{< fa earth-oceania >}} We value</h1> </center>
-
-:::
-
-:::{.column-screen}
-
-
-```{r, echo = FALSE}
-# find icons at https://fontawesome.com/v5.15/icons?d=gallery&p=2
-
-tags$div(class = "values-row",
-         
-create_values_box1(
-  value = "\    Openness",
-  icon = "fas fa-book-open",
-  text = "Data are most useful when they are widely available and easy to use. We try to encourage the sharing of tools that make data from the Atlas of Living Australia more open and useful for everyone"
-),
-
-create_values_box2(
-  value = "\    Scientific transparency",
-  icon = "fas fa-dna",
-  text = "Transparency is necessary for reproducible science. We encourage that decisions, methods and deviations are clear and transparent in a workflow from the planning phase, to the retrieval and analysis of data, to the final output"
-),
-
-create_values_box3(
-  value = "\    Robust methods",
-  icon = "far fa-chart-bar",
-  text = "No method or analytic procedure is perfect. We value consideration for strengths and limitations of each method or analysis. This attitude helps researchers choose methods that provide robust results for their specific question"
-)
-
-)
-```
-
-:::
-:::
 

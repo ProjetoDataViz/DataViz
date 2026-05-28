@@ -1,7 +1,7 @@
 /* ----------- INDEX PAGE -----------*/
 
 /* HERO IMAGE AT TOP OF PAGE*/
-
+/*
 .hero-container {
   overflow: hidden;
   position: relative;
@@ -13,17 +13,42 @@
   position: absolute;
   bottom: 0;
   /* liner gradient tints the image darker for readability*/
-  background-image: linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.3) ), url(Imagens/Bibliotecauff.jpg);
+  /*background-image: linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.3) ), url(Imagens/Bibliotecauff.jpg);
   background-size: cover;
   height: auto;
   width: 100vw;
   background-color: #141c25;
   display: flex; /* Change to `display: none` for no hero image */
-  justify-content: center;
+  /*justify-content: center;
   align-items: center;
   background-repeat: no-repeat;
   padding: 21vh 0;
+}*/
+
+.hero-container {
+    width: 100vw; /* Garante que vai de ponta a ponta na tela */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 40vh; /* Define a altura da foto (40% da altura da tela) */
+    overflow: hidden;
 }
+
+.hero-image {
+    /* Mantém o seu fundo escurecido e a sua foto */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("Imagens/Bibliotecauff.jpg");
+    background-size: cover; /* Faz a foto preencher todo o espaço sem achatar */
+    background-position: center; /* Centraliza a câmera no meio da foto */
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; /* Faz a imagem ocupar 100% do container que criamos acima */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .ALA-top {
   position: relative;
@@ -33,6 +58,7 @@
   padding-right: 133px;
   margin-bottom: -4.7rem;
   font-weight: bold;
+  display: none;
 }
 
 .ALA-bottom {
@@ -42,6 +68,7 @@
   color: #EEECEA;
   padding-left: 105px;
   font-weight: bold;
+  display: none;
 }
 
 .ALA-byline {
@@ -49,6 +76,7 @@
   text-align: center;
   color: #ffffff;
   padding-top: 0px;
+  display: none;
 }
 
 .credit-text {
@@ -56,17 +84,20 @@
   text-align: left;
   left: 2%;
   bottom: 5%;
+  display: none;
 }
 
 .ALA-species-credit {
   font-size: 11px;
   color: white;
+  display: none;
 }
 
 .ALA-image-credit {
   text-align: left;
   font-size: 14px;
   color: white;
+  display: none;
 }
 
 @media (min-width: 992px){

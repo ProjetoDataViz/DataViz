@@ -18,7 +18,7 @@ website:
   favicon: images/favicon.ico
   draft-mode: unlinked
   navbar:
-    background: "#91C2E6"
+    background: "#015296"
     foreground: "#222322"
     title: "DataViz"
     search: true
