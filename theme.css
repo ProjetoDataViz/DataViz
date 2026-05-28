@@ -32,6 +32,10 @@
 
 }
 
+.navbar-logo {
+    transform: scale(1.5); 
+}
+
 .navbar-brand>img {
     max-height: 80px;
     width: auto;
