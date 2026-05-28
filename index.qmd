@@ -3,7 +3,7 @@ toc: false
 format: 
   html: 
     include-in-header: hero-image.html
-    #include-after-body: _footer.html
+    include-after-body: _footer.html
     sidebar: false
     anchor-sections: false
     css: [theme.css, index.css]
@@ -68,7 +68,7 @@ Feito por [Guilherme Veloso](http://lattes.cnpq.br/7520289716113534) Orientador 
 :::
 
 
-:::{.column-screen style="background-color:#B8573E;"}
+:::{.column-screen style="background-color:#04807c;"}
 :::{.column-screen-inset}
 :::{.home-column-image .col-left}
 
