@@ -16,7 +16,13 @@ output:
     toc_float:
       collapsed: true
     df_print: paged
-    
+categories:
+  - Summaries 
+  - Eukaryota
+  - Plantae
+  - R
+image: Imagens/work1.png    
+  
   
 ---
 
@@ -91,7 +97,7 @@ opts_knit$set(width=75)
 
 
 ```{r fig.align='center', out.width='60%', echo=FALSE}
-#knitr::include_graphics("Imagens/tidyverse_packages.png")
+knitr::include_graphics("Imagens/work1.png")
 ```
 
 
@@ -166,7 +172,7 @@ O diretório de trabalho (working directory) é a pasta em que o R vai procurar 
 ### O pacote ```readr``` 
 
 ```{r fig.align='center', out.width='30%', echo=FALSE}
-#knitr::include_graphics("Imagens/readr.png")
+knitr::include_graphics("Imagens/readr.png")
 ```
 
 
@@ -214,7 +220,7 @@ dengue2023 = read_csv('bases/DENGBR23.csv')
 
 
 ```{r fig.align='center', out.width='30%', echo=FALSE}
-#knitr::include_graphics("Imagens/readxl.png")
+knitr::include_graphics("Imagens/readxl.png")
 ```
 
 Para ler planilhas do Excel, podemos utilizar as funções read_xlsx, read_xls ou read_excel(ela consegue detectar a extensão do arquivo).
@@ -248,7 +254,7 @@ library(dados)
 ### O pacote dplyr 
 
 ```{r fig.align='center', out.width='30%', echo=FALSE}
-#knitr::include_graphics("Imagens/dplyr.png")
+knitr::include_graphics("Imagens/dplyr.png")
 ```
 
 
@@ -413,7 +419,7 @@ Exemplos:
 ### O pacote tidyr
 
 ```{r fig.align='center', out.width='30%', echo=FALSE}
-#knitr::include_graphics("Imagens/tidyr.png")
+knitr::include_graphics("Imagens/tidyr.png")
 ```
 
 O objetivo do ```tidyr``` é auxiliar o usuário a criar uma base "tidy", onde:

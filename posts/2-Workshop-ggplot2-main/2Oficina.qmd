@@ -16,6 +16,12 @@ output:
     toc_float:
       collapsed: true
     df_print: paged
+categories:
+  - GGplot2
+  - Graficos
+  - R
+image: Imagens/ggplot2.png    
+  
   
 ---
 
@@ -89,7 +95,7 @@ opts_knit$set(width=75)
 # **Introdução ao ggplot2**
 
 ```{r fig.align='center', out.width='30%', echo=FALSE}
-#knitr::include_graphics("Imagens/ggplot2.png")
+knitr::include_graphics("Imagens/ggplot2.png")
 ```
 
 O ```ggplot2``` é um pacote estruturado de forma que seja possível criar gráficos elaborados a partir de múltiplas camadas. Os componentes básicos são os mesmos para todos os gráficos: um conjunto de dados, sistema de coordenadas e os objetos geométricos denominados ```geoms```. 

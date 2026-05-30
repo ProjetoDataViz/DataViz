@@ -16,6 +16,13 @@ output:
     toc_float:
       collapsed: true
     df_print: paged
+categories:
+  - GGplot2
+  - Graficos
+  - R
+  - Mapas
+image: Imagens/.png    
+
 ---
 
 ```{=html}
