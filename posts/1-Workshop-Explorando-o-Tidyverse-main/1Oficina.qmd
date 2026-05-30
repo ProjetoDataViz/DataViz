@@ -17,9 +17,8 @@ output:
       collapsed: true
     df_print: paged
 categories:
-  - Summaries 
-  - Eukaryota
-  - Plantae
+  - Manipulation
+  - Leitura
   - R
 image: Imagens/work1.png    
   

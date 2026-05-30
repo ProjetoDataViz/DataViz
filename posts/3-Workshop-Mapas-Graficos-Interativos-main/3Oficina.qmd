@@ -21,7 +21,7 @@ categories:
   - Graficos
   - R
   - Mapas
-image: Imagens/.png    
+image: Imagens/maps_library.png    
 
 ---
 
@@ -471,7 +471,7 @@ breaks = tm_shape(shp = taxa_shape)+
   tm_borders(col='gray10')+
   tm_fill(col='Total',palette = 'Reds',breaks = c(0,3,6,9,max(taxa_shape$Total)))
 
-tmap_arrange(equal,quantile,jenks,cont,n,breaks, ncol =3)
+#tmap_arrange(equal,quantile,jenks,cont,n,breaks, ncol =3)
 
 ```
 
@@ -530,19 +530,19 @@ Para ativar interatividade em um mapa feito com o pacote `tmap`,basta utilizar o
 # Modo interativo:
 tmap_mode("view")
 
-# Especificando as informações que aparecem nos popups
+# Especificando as informacoes que aparecem nos popups
 tm_shape(shp = taxa_shape)+ 
   tm_borders(col='gray10')+
   tm_fill(col='Total',palette = 'Reds',style='cont',title= 'Taxa',
-          popup.vars = c('Município'='NM_MUN',
+          popup.vars = c('Municipio'='NM_MUN',
                          'Taxa total'='Total',
                          'Taxa feminina'='Feminino',
                          'Taxa masculina'='Masculino',
-                         'Área(km2)'='AREA_KM2'),
-          id = "NM_MUN")+
-  tm_layout(title = 'Taxa de mortalidade no RJ')
+                         'Area km2'='AREA_KM2'),
+           id = "NM_MUN")#+
+#  tm_layout(title = 'Taxa de mortalidade no RJ')
 
-# Voltando ao modo estático
+# Voltando ao modo estatico
 tmap_mode('plot')
 ```
 

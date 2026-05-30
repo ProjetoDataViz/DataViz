@@ -231,7 +231,7 @@
 
 .honey:hover {
   filter: invert(95%) sepia(43%) saturate(3246%) hue-rotate(313deg) brightness(100%) contrast(102%);
-  color: #FFC557;
+  color: #015296;
 }
 
 .honey-white {
@@ -240,7 +240,7 @@
 
 .honey-white:hover {
   filter: invert(95%) sepia(43%) saturate(3246%) hue-rotate(313deg) brightness(100%) contrast(102%);
-  color: #FFC557;
+  color: #015296;
 }
 
 

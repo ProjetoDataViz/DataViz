@@ -15,11 +15,11 @@ website:
     image-alt: ""
     card-style: summary_large_image
   site-url: https://labs.ala.org.au/
-  favicon: images/favicon.ico
+  favicon: Imagens/dataviz.png
   draft-mode: unlinked
   navbar:
-    background: "#015296"
-    foreground: "#222322"
+    background: "#374151"
+    foreground: "#04807c"
     title: "DataViz"
     search: true
     logo: Imagens/dataviz.png

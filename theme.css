@@ -15,7 +15,7 @@
   --subheader-font: 'Roboto', sans-serif;
   --mono-font: 'Fira Mono', monospace;
   --header-font: 'Lato' sans-serif;
-  --bs-navbar-hover-color: #E06E53;
+  --bs-navbar-hover-color: #04807c;
 }
 
 /* navbar */
@@ -37,7 +37,7 @@
 }
 
 .navbar-brand>img {
-    max-height: 80px;
+    max-height: 70px;
     width: auto;
     padding-left: 9px;
     padding-top: 0px;
@@ -132,8 +132,9 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: var(--primary-orange);
+a, a:visited {
+    color: #91C2E6 ; /* O !important atropela a regra australiana */
+    text-decoration: none;
 }
 
 a.white {
@@ -142,7 +143,7 @@ a.white {
 }
 
 a:hover {
-  color: #91C2E6;
+  color: #015296;
 }
 
 /* ALA navbar favicon color */
@@ -228,7 +229,7 @@ a:hover {
 }
 
 .team-image-text {
-  color: #E06E53;
+  color: #04807c;
   font-size: 14px;
   padding: 16px 28px;
 }
@@ -245,7 +246,7 @@ a:hover {
 }
 
 .name:hover {
-  color: #E06E53 !important;
+  color: #04807c !important;
   text-decoration: none !important;
 }
 
@@ -271,7 +272,7 @@ a:hover {
 }
 
 .button:hover {
-  background-color: #E06E53;
+  background-color: #04807c;
 }
 /* ----------------------------------*/
 
@@ -279,7 +280,7 @@ a:hover {
 /* ----------- PEOPLE PAGES -----------*/
 
 .article-link:hover {
-  color: #E06E53;
+  color: #04807c;
   text-decoration: none;
   transition: background-size .4s ease;
   border-bottom: 1px solid
@@ -318,7 +319,7 @@ a:hover {
 }
 
 .button-2:hover {
-  background-color: #E06E53;
+  background-color: #04807c;
 }
 
 .bio-row {
@@ -533,11 +534,11 @@ img.rounded {
 }
 
 .nav-pills .nav-link.active {
-    background-color: #FFC557;
+    background-color: #04807c;
 }
 
 .nav-link:hover {
-  color: var(--primary-orange);
+  color: #04807c;
 }
 
 .nav-item .nav-link {
@@ -549,7 +550,7 @@ img.rounded {
 }
 
 .nav-pills .nav-item .nav-link:hover {
-  color: var(--primary-orange;
+  color: #04807c;
 }
 
 /* Tab appearance in panel-tabset */

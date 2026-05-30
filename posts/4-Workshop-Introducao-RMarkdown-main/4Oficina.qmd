@@ -1,0 +1,349 @@
+---
+title: "Introdução ao Rmarkdown"
+author:
+- name: Ana Li
+- name: 'Gabriel Gonçalves '
+encoding: "UTF-8"
+output:
+  html_document:
+    includes:
+      before_body: header.html
+    theme:
+      bg: '#ffffff'
+      fg: '#140945'
+      primary: '#678be0'
+      secondary: '#678be0'
+    toc: true
+    toc_float:
+      collapsed: true
+    df_print: paged
+  pdf_document:
+    toc: true
+categories:
+  - Apresentação
+  - Rmarkdown
+  - R
+  - Manipulation
+image: Imagens/Les_logo.png      
+---
+
+```{=html}
+<style>
+.sidebar-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+</style>
+```
+
+::: sidebar-footer
+<strong>Orientador:</strong> Rafael Erbisti
+:::
+
+```{=html}
+<style>
+/* Container principal - centraliza tudo */
+.title-container {
+  text-align: center;
+  margin: 0 auto 30px auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Título */
+h1.title {
+  color: #2c3e50;
+  text-align: center !important;
+  margin-bottom: 10px !important;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Autor */
+.author {
+  study_hours_per_daylay: block;
+  text-align: center !important;
+  font-style: italic;
+  color: #7f8c8d;
+  margin-bottom: 5px !important;
+}
+
+/* Data */
+.date {
+  study_hours_per_daylay: block;
+  text-align: center !important;
+}
+</style>
+```
+
+```{r knitr_init, echo=FALSE, warning=FALSE, cache=FALSE, include=FALSE}
+library(knitr)
+library(rmdformats)
+library(tidyverse)
+ 
+ ## Global options
+options(max.print="75")
+opts_chunk$set(cache=TRUE,
+                prompt=FALSE,
+                tidy=TRUE,
+                comment=NA,
+                message=FALSE,
+                warning=FALSE)
+opts_knit$set(width=75)
+
+```
+
+# **Introdução ao R Markdown**
+
+R Markdown é uma ferramenta poderosa que combina a simplicidade da linguagem Markdown com a capacidade analítica do R, permitindo a criação de documentos dinâmicos e reprodutíveis. Ele é amplamente utilizado para gerar relatórios, apresentações, dashboards e até livros inteiros, integrando texto, código, resultados e formatação em um único arquivo.
+
+Para usar o R Markdown, é preciso instalar e carregar o pacote no R.
+
+```{r }
+if(!require("rmarkdown")) install.packages("rmarkdown") 
+library(rmarkdown)
+```
+
+Para criar um novo documento R Markdown:
+
+1.  Abra o RStudio.
+
+2.  Vá em **File \> New File \> R Markdown**.
+
+3.  Preencha as informações básicas e clique em OK.
+
+## **Vantagens do R Markdown**
+
+-   **Reprodutibilidade**: Integra dados, código e resultados em um único documento
+-   **Flexibilidade**: Suporta múltiplos formatos de saída (HTML, PDF, Word, etc.)
+-   **Automação**: Atualiza resultados automaticamente quando os dados mudam
+
+# **Estrutura do R Markdown**
+
+Um documento R Markdown (extensão .Rmd) é composto por três elementos principais:
+
+-   Cabeçalho YAML: Metadados que controlam a formatação do documento
+
+-   Textos formatados em Markdown: Conteúdo narrativo com formatação simples
+
+-   Chunks de código: Blocos de código em R ou outras linguagens
+
+## **YAML**
+
+O cabeçalho YAML é a seção inicial do documento, delimitada por `---`. Ele define metadados como título, autor, data,temas e formato de saída.
+
+As principais chaves para o cabeçalho são as seguintes:
+
+-   title: Título do documento
+
+-   author: Nome(s) do(s) autor(es)
+
+-   date: Data no documento
+
+-   format: Formato de saída
+
+-   toc: Tabela de conteúdos
+
+-   theme: Tema visual
+
+``` yaml
+---
+title: "Título do documento"
+author: 
+  - name: "Autor(a) 1"
+  - name: "Autor(a) 2 "
+output:
+  html_document:
+    theme: 
+      bg : '#ffffff'  # cor do fundo
+      fg : '#140945'  # cor do texto
+    toc: yes
+---
+```
+
+> Existem alguns temas prontos para utilizar no theme. Neste [RPubs](https://rpubs.com/ranydc/rmarkdown_themes) há alguns exemplos
+
+## **Formatação de textos**
+
+### **Titulação**
+
+```{r eval =F}
+# Título Principal 
+
+## Subtítulo
+
+### Subseção
+
+#### Subsubseção 
+```
+
+# Título Principal
+
+## Subtítulo
+
+### Subseção
+
+#### Subsubseção
+
+### **Ênfase**
+
+-   **Negrito**: `**texto**`
+
+-   *Itálico*: `*texto*`
+
+-   ***Negrito e itálico***: `***texto***`
+
+-   ~~Tachado~~: `~~texto~~`
+
+### **Listagem**
+
+Para listas não ordenadas utiliza-se `-` ou `*`
+
+-   Item 1: `- Item 1`
+
+-   Item 2: `- Item 2`
+
+    -   Subitem 2.1: `- subitem 2.1`
+
+-   Item 1: `* Item 1`
+
+-   Item 2: `* Item 2`
+
+    -   Subitem 2.1: `* subitem 2.1`
+
+Para listas ordenadas utiliza-se o número seguido do ponto
+
+1.  Primeiro item: `1. Primeiro item`
+2.  Segundo item: `2. Segundo item`
+    1.  Primeiro subitem: `1.  Primeiro subitem`
+
+### **Links**
+
+No Markdown, existem duas maneiras para adicionar links.
+
+-   Link direto: O endereço ficará visível e clicável . O endereço em forma de link direto tem o formato `<https://exemplo.com/>`.
+
+-   Texto-âncora: adicione entre colchetes o texto que você quer que apareça, e entre os parênteses, o endereço de destino, no formato `[exemplo](https://exemplo.com/)`.
+
+> Exemplo: <https://github.com/lesuff> e [GitHub do LES](https://github.com/lesuff)
+
+## **Chunks**
+
+Os *chunks* de códigos são iniciados por \`\`\` {r, ...} e fechados por \`\`\` . Eles possuem uma série de argumentos que manipulados apropriadamente rendem diferentes saídas, isto é, pode-se omitir código, resultados do código, entre outras. Abaixo, são apresentadas os principais argumentos.
+
+```{r, echo=FALSE}
+
+Opção <- c("eval", "include","collapse","echo","error","message","warning","fig.cap","fig.height","fig.width")
+`Valor Padrão` <- c(TRUE,TRUE,FALSE,FALSE,TRUE,TRUE,TRUE,"NULL",7,7)
+Descrição = c("Indica se o código deve ser executado","Indica se o código deve ser exibido no documento final. Os resultados não serão apresentados.","Indica se o código e os resultados do chunk devem ser colapsados em um bloco único.","Indica se o código será exibido no documento final. Os resultados serão apresentados.","Indica se mensagens de erros serão exibidas.","Indica se mensagens geradas pelo código serão exibidas.","Indica se avisos gerados pelo código serão exibidos.","Título de gráfico referente ao chunk.","Altura para gráficos criados pelo código (em polegadas).","Largura para gráficos criados pelo código (em polegadas).")
+knitr::kable(tibble(Opção, `Valor Padrão`, Descrição), align = 'ccl')
+```
+
+# **Inserção de elementos**
+
+## **Equações matemáticas**
+
+Use `$equação$` para equações dentro do texto, como $E = mc^2$ ou $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.
+
+```{r eval=F}
+$E = mc^2$ ou $\sum_{i=1}^n i = \frac{n(n+1)}{2}$
+```
+
+Para equações em destaque, coloque a expressão entre `$$`
+
+```{r eval =F}
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+$$
+
+```
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+$$
+
+## **Imagens**
+
+```{r eval=F}
+knitr::include_graphics("Imagens/dataviz.png")
+```
+
+```{r echo = F}
+knitr::include_graphics("Imagens/dataviz.png")
+```
+
+## **Tabelas**
+
+-   Pelo próprio Markdown:
+
+Usar `|` para delimitar as colunas e hífen `-` na segunda linha para indicar que acima estão os títulos das colunas. O alinhamento da tabela é controlado utilizando `:` ao lado do campo horizontal de hífens `---`, na segunda linha da tabela.
+
+```{r eval=F}
+| Alinhado à esquerda | Centralizado | Alinhado à direita |
+|:---------------------|:-----------:|-------------------:|
+| Conteúdo             | Conteúdo    | Conteúdo           |
+```
+
+| Alinhado à esquerda | Centralizado | Alinhado à direita |
+|:--------------------|:------------:|-------------------:|
+| Conteúdo            |   Conteúdo   |           Conteúdo |
+
+Dentro do chunk com o pacote `knitr`:
+
+```{r tabela ,eval = F, echo=F}
+
+# Criar tabela descritiva
+dados_resumo <- data.frame(
+  Variável = c("Nota", "Horas de Netflix", "Horas de Estudo", "Horas de sono"),
+  Média = c(mean(performance$exam_score), mean(performance$netflix_hours), mean(performance$study_hours_per_day), mean(performance$sleep_hours)),
+  Desvio_Padrão = c(sd(performance$exam_score), sd(performance$netflix_hours), sd(performance$study_hours_per_day), sd(performance$sleep_hours)),
+  Mínimo = c(min(performance$exam_score), min(performance$netflix_hours), min(performance$study_hours_per_day), min(performance$sleep_hours)),
+  Máximo = c(max(performance$exam_score), max(performance$netflix_hours), max(performance$study_hours_per_day), max(performance$sleep_hours))
+)
+
+knitr::kable(dados_resumo, digits = 2, caption = "Estatísticas Descritivas")
+```
+
+```{r tabela_descritiva, echo=TRUE}
+performance = read_csv('bases/student_habits_performance.csv')
+
+# Criar tabela descritiva
+dados_resumo <- data.frame(
+  Variável = c("Nota", "Horas de Netflix", "Horas de Estudo", "Horas de sono"),
+  Média = c(mean(performance$exam_score), mean(performance$netflix_hours), mean(performance$study_hours_per_day), mean(performance$sleep_hours)),
+  Desvio_Padrão = c(sd(performance$exam_score), sd(performance$netflix_hours), sd(performance$study_hours_per_day), sd(performance$sleep_hours)),
+  Mínimo = c(min(performance$exam_score), min(performance$netflix_hours), min(performance$study_hours_per_day), min(performance$sleep_hours)),
+  Máximo = c(max(performance$exam_score), max(performance$netflix_hours), max(performance$study_hours_per_day), max(performance$sleep_hours))
+)
+
+knitr::kable(dados_resumo, digits = 2, caption = "Estatísticas Descritivas")
+```
+
+# **Códigos embutidos**
+
+Códigos embutidos permitem inserir resultados de R diretamente no texto. Use "r código" entre crases \`\` para avaliar expressões R inline.
+
+**Exemplos**:
+
+```{r eval = F}
+A data de hoje é `r Sys.Date()`
+```
+
+-   A data de hoje é `r Sys.Date()`
+
+```{r eval= F}
+O número de linhas no dataset é `r nrow(mtcars)`
+```
+
+-   O número de linhas no dataset é `r nrow(mtcars)`
+
+```{r eval=F}
+
+A nota média dos alunos da base é `r mean(performance$exam_score)`
+
+```
+
+-   A nota média dos alunos da base é `r mean(performance$exam_score)`
