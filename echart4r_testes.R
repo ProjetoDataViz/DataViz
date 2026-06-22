@@ -1,0 +1,98 @@
+#Treinando o echarts4r
+
+install.packages("echarts4r")   #Installando o pacote
+ 
+library(echarts4r)    #Chamando o pacote 
+library(dplyr)
+
+df = airquality  #Base padrão do R
+
+#Tratamento para aplição
+df$Month = sprintf("%02d", df$Month)  #pedando a coluna de meses transformando em character com sempre dois algarismo, ou seja 
+df$Day = sprintf("%02d", df$Day)      # oq antes estava 1, agr vai ser "01"
+
+df$Date = paste("1973", df$Month, df$Day, sep = "-") |> 
+  as.Date(format = "%Y-%m-%d")  #criando uma coluna de data (poderia ser feito com lubridate também)
+
+#Sobre a library:
+
+#todas as funções começam com e_  ;
+#sempre comecemos pelo e_charts, principal argumento que chamará o nosso data frame para o gráfico
+#diferente do GGplot, o echarts tem uma ligação com as funções utilizando o pipe nativo do pacote dplyr
+
+
+df |> 
+  e_charts(x = Date) |>   #chamando o data frame prinicipal 
+  e_line(serie = Temp)    #Adicionando a linha temporal da variável temperatura( lembrando que estamos em uma basecom dados diários)
+
+#adicionando um underline ao final da função conseguimos chamar o objeto pelo nome da variável Em " "
+
+df |> 
+  e_charts_("Date") |> 
+  e_line_("Temp")
+#
+df |> 
+  e_charts(Date) |> 
+  e_line(Temp, smooth = TRUE) |>  
+  e_area(Wind) #linha do tempo com área pra variável vento
+#
+df |> 
+  e_charts(Date) |> 
+  e_line(Temp, smooth = TRUE) |>  
+  e_area(Wind, smooth = TRUE) |> 
+  e_axis_labels(x = "1973.") |> #Adicionando um eixo indicando o ano( preciso repartir a base pra ver essa função)
+  e_title("New York Air Quality Data", "Maximum daily temperature and mean wind speed") |>  # Para titulo e subtitulo, em ordem sem delongas
+  e_theme("infographic") #em alguns temas igual o ggplot, tenho que descobrir os principais (?e_theme)
+#
+df |> 
+  e_charts(Date) |>
+  e_line(Temp, smooth = TRUE) |>  
+  e_area(Wind, smooth = TRUE) |> 
+  e_axis_labels(x = "1973.") |> 
+  e_title("New York Air Quality Data", "Maximum daily temperature and mean wind speed") |>  
+  e_theme("infographic") |>  
+  e_legend(right = 0) |> #comando para mecher na legenda, jogando a para direita
+  e_tooltip(trigger = "axis") #primeiro comando de iteratividade, ao passar o mouse encima conseguimos ter uma boa visualização de dados
+#
+
+
+Box <- data.frame(
+  x = c(
+    rnorm(100),
+    runif(100, -5, 10),
+    rnorm(100, 10, 3)
+  ),
+  grp = c(
+    rep(LETTERS[1], 100),
+    rep(LETTERS[2], 100),
+    rep(LETTERS[3], 100)
+  )
+)
+
+Box |> 
+  group_by(grp) |> 
+  e_charts() |> 
+  e_boxplot(x) #Boxplot
+
+#
+hist <- data.frame(
+  x = 1:100,
+  y = rnorm(100, 20, 12)
+)
+
+hist |> 
+  e_charts() |> 
+  e_histogram(y, name = "histogram") |> #Histograma
+  e_tooltip()
+
+hist |>
+  e_charts() |> 
+  e_histogram(y) |> 
+  e_density(y, name = "density", areaStyle = list(opacity = .4), 
+            smooth = TRUE, y_index = 1) |> #densidade y_index adiciona mais um eixo y seguindo os limites da variável no modelo escolhido
+  e_tooltip()
+
+
+#### Colinha ####
+
+#https://echarts.apache.org/en/option.html

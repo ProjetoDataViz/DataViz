@@ -1,6 +1,6 @@
 ---
 title: "Equipe DataViz"
-subtitle: Orientadores e Monitores que passaram na história do DataViz
+subtitle: Orientadores e Monitores que passaram na historia do DataViz
 format: 
   html: 
     include-after-body: _footer.html
@@ -22,24 +22,28 @@ source("../R/functions.R")
 
 ### Orientadores:  
 
-- Data analysis & reporting on key projects
-- R package development & maintenance
-- Outreach & engagement with the research community
+- Elaborar cronograma de atividades
+- Auxiliar o desenvolvimento do monitor 
+- Melhorar o desenvolvimento academico para a disciplina visualização de dados 
 
 ### Monitores:
 
-# Meet the team
+- Preparar e elaborar conceitos e práticas de visualização de dados no R
+- Desenvolver workshops 
+- Ajudar no desenvolvimento academico na disciplina visualização de dados
 
-*Click on photos to view their articles and contributions*
+# Time do DataViz
+
+*Click nas fotos para ver o perfil individual*
 ```{r}
 #| echo: false
 tags$div(class = "row",# Create a row for 3 team-member cards
          
 create_team_card(
-  person_page = "Westgate_Martin/index.html",
-  img_src = "../images/people/martin.jpg",
-  name = "Martin Westgate",
-  text = "Team Leader"
+  person_page = "Kellie_Dax/index.html",
+  img_src = "../images/people/dax.jpg",
+  name = "Dax Kellie",
+  text = "Data Analyst"
 ),
 create_team_card(
   person_page = "Balasubramaniam_Shandiya/index.html",
@@ -57,10 +61,10 @@ create_team_card(
 tags$div(class = "row", # Create a row for 3 team-member cards
          
 create_team_card(
-  person_page = "Kellie_Dax/index.html",
-  img_src = "../images/people/dax.jpg",
-  name = "Dax Kellie",
-  text = "Data Analyst"
+  person_page = "Leonardo_vinicius/index.html",
+  img_src = "../Imagens/monitores/Leonardo_vinicius.jpg",
+  name = "Leonardo Vinicius",
+  text = "Monitor"
 ),
 create_team_card(
   person_page = "Seers_Juliet/index.html",

@@ -1,6 +1,5 @@
 ---
-title: "Martin Westgate"
-include-after-body: _footer.html
+title: "Leonardo Vinicius"
 ---
 
 ```{r, include=FALSE}
@@ -9,7 +8,7 @@ library(here)
 source(here("R", "functions.R"))
 ```
 
-### {{< fa circle-user >}} Bio 
+### {{< fa circle-user >}} Biografia 
 
 :::{.bio-row}
 :::{.bio-column-right}
@@ -21,7 +20,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/AtlasOfLivingAustrali
 :::
 
 :::{.bio-column-left}
-Martin leads the Science & Decision Support Team. He holds a doctorate in landscape ecology and conservation biology from the Australian National University. His work focuses on conceptual, computational and statistical tools to better understand patterns in nature.
+Aluno do curso de graduação em estatística na Universidade Federal Fluminense - UFF em Niterói.
 
 :::
 :::
@@ -34,7 +33,7 @@ tags$div(class = "row", style = "display: flex;",
          
 create_button(
   icon = "fab fa-github fa-xl",
-  url = "https://github.com/mjwestgate"
+  url = "https://github.com/Delevini"
 ),
 create_button(
   icon = "fas fa-globe fa-xl",
@@ -46,7 +45,7 @@ create_button(
 ),
 create_button(
   icon = "fab fa-linkedin-in fa-xl",
-  url = "https://www.linkedin.com/in/martin-westgate-410708232/"
+  url = "https://www.linkedin.com/in/leonardo-vinicius-dos-santos-ramos/"
 )
 )
 ```

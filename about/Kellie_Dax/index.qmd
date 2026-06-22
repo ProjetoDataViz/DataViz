@@ -1,6 +1,5 @@
 ---
-title: "Dax Kellie"
-include-after-body: _footer.html
+title: "Testando"
 ---
 
 ```{r, include=FALSE}
@@ -21,8 +20,8 @@ knitr::include_graphics("https://raw.githubusercontent.com/AtlasOfLivingAustrali
 :::
 
 :::{.bio-column-left}
-Dax is an evolutionary biologist, with a PhD in biological sciences and social psychology. As a data analyst and science lead at the ALA, he tries to make data in the ALA accessible for scientists to use in ways that are robust and transparent. <br><br>
-Dax is the primary editor of ALA Labs.
+
+Fazendo testes nesse perfil
 
 :::
 :::
