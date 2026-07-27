@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://labs.ala.org.au/posts/index.html</loc>
-    <lastmod>2026-05-26T01:54:01.492Z</lastmod>
+    <lastmod>2026-07-27T00:45:29.323Z</lastmod>
   </url>
   <url>
     <loc>https://labs.ala.org.au/posts/4-Workshop-Introducao-RMarkdown-main/4Oficina.html</loc>
@@ -14,19 +14,15 @@
   </url>
   <url>
     <loc>https://labs.ala.org.au/index.html</loc>
-    <lastmod>2026-05-30T05:21:01.828Z</lastmod>
+    <lastmod>2026-07-27T00:53:56.481Z</lastmod>
+  </url>
+  <url>
+    <loc>https://labs.ala.org.au/about/index.html</loc>
+    <lastmod>2026-07-27T01:40:16.573Z</lastmod>
   </url>
   <url>
     <loc>https://labs.ala.org.au/about/Seers_Juliet/index.html</loc>
     <lastmod>2026-05-02T05:26:33.756Z</lastmod>
-  </url>
-  <url>
-    <loc>https://labs.ala.org.au/about/Kellie_Dax/index.html</loc>
-    <lastmod>2026-06-22T03:47:19.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://labs.ala.org.au/about/Balasubramaniam_Shandiya/index.html</loc>
-    <lastmod>2026-05-02T05:26:33.557Z</lastmod>
   </url>
   <url>
     <loc>https://labs.ala.org.au/about/Buyan_Amanda/index.html</loc>
@@ -34,11 +30,15 @@
   </url>
   <url>
     <loc>https://labs.ala.org.au/about/Leonardo_vinicius/index.html</loc>
-    <lastmod>2026-06-22T04:10:44.332Z</lastmod>
+    <lastmod>2026-07-27T03:07:02.500Z</lastmod>
   </url>
   <url>
-    <loc>https://labs.ala.org.au/about/index.html</loc>
-    <lastmod>2026-06-22T03:43:38.173Z</lastmod>
+    <loc>https://labs.ala.org.au/about/guilherme_veloso/index.html</loc>
+    <lastmod>2026-07-27T02:14:00.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://labs.ala.org.au/about/rafael_erbisti/index.html</loc>
+    <lastmod>2026-07-27T03:02:41.259Z</lastmod>
   </url>
   <url>
     <loc>https://labs.ala.org.au/posts/1-Workshop-Explorando-o-Tidyverse-main/1Oficina.html</loc>

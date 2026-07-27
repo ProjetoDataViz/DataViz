@@ -4,7 +4,7 @@ subtitle: Orientadores e Monitores que passaram na historia do DataViz
 format: 
   html: 
     include-after-body: _footer.html
-title-block-banner: "#E06E53"
+title-block-banner: "#4a8fc1"
 title-block-banner-color: body
 ---
 
@@ -40,22 +40,16 @@ source("../R/functions.R")
 tags$div(class = "row",# Create a row for 3 team-member cards
          
 create_team_card(
-  person_page = "Kellie_Dax/index.html",
-  img_src = "../images/people/dax.jpg",
-  name = "Dax Kellie",
-  text = "Data Analyst"
+  person_page = "rafael_erbisti/index.html",
+  img_src = "../Imagens/orientadores/rafael_erbisti.jpg",
+  name = "Rafael Erbisti",
+  text = "Orientador"
 ),
 create_team_card(
-  person_page = "Balasubramaniam_Shandiya/index.html",
-  img_src = "../images/people/shandiya.png",
-  name = "Shandiya Balasubramaniam",
-  text = "Data Analyst"
-),
-create_team_card(
-  person_page = "Buyan_Amanda/index.html",
-  img_src = "../images/people/amanda.jpg",
-  name = "Amanda Buyan",
-  text = "Data Analyst"
+  person_page = "guilherme_veloso/index.html",
+  img_src = "../Imagens/orientadores/guilherme_veloso.jpg",
+  name = "Gruilherme Veloso",
+  text = "Orientador"
 )
 )
 tags$div(class = "row", # Create a row for 3 team-member cards
@@ -67,10 +61,16 @@ create_team_card(
   text = "Monitor"
 ),
 create_team_card(
+  person_page = "Buyan_Amanda/index.html",
+  img_src = "../images/people/amanda.jpg",
+  name = "Ana Li",
+  text = "Monitora"
+),
+create_team_card(
   person_page = "Seers_Juliet/index.html",
   img_src = "../images/people/juliet.jpg",
-  name = "Juliet Seers",
-  text = "Training & Outreach Coordinator"
+  name = "Gabriel Gonçalves",
+  text = "Monitor"
 )
 )
 ```

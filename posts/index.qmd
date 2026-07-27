@@ -11,7 +11,7 @@ listing:
   categories: true
   page-size: 9
   fields: [image, author, title, description, date, reading-time]
-title-block-banner: "#E06E53"
+title-block-banner: "#4a8fc1"
 title-block-banner-color: body
 page-layout: full
 format: 

@@ -1,5 +1,5 @@
 ---
-title: "Testando"
+title: "Rafael Santos Erbisti"
 ---
 
 ```{r, include=FALSE}
@@ -15,13 +15,19 @@ source(here("R", "functions.R"))
 
 ```{r out.width='275px', out.extra='style="display:block; margin-left:auto; margin-right:auto; clip-path: circle();"'}
 #| echo: false
-knitr::include_graphics("https://raw.githubusercontent.com/AtlasOfLivingAustralia/ala-labs/main/images/people/dax.jpg")
+knitr::include_graphics("https://raw.githubusercontent.com/AtlasOfLivingAustralia/ala-labs/main/images/people/martin.jpg")
 ```
 :::
 
 :::{.bio-column-left}
 
-Fazendo testes nesse perfil
+Professor do Departamento de Estatística
+
+ - **Doutorado em Estatística (UFRJ)**
+ - **Mestrado em Estatística (UFRJ)**
+ - **Bacharelado em Estatística (ENCE)**
+ 
+Gabinete: 70 (Bloco G – Ala A – 4º andar)
 
 :::
 :::
@@ -34,17 +40,17 @@ Fazendo testes nesse perfil
 tags$div(class = "row", style = "display: flex;",
          
 create_button(
-  icon = "fab fa-github fa-xl",
-  url = "https://github.com/daxkellie"
+  icon = "fas fa-envelope fa-xl",
+  url = "rerbisti@id.uff.br"
 ),
 create_button(
-  icon = "fas fa-globe fa-xl",
-  url = "https://daxkellie.com/"
-),
-create_button(
-  icon = "fab fa-twitter fa-xl",
-  url = "https://bsky.app/profile/daxkellie.bsky.social"
-)
+  icon = "fas fa-file-alt fa-xl",
+  url = "http://lattes.cnpq.br/4304671811815049"
+)#,
+#create_button(
+#  icon = "fab fa-twitter fa-xl",
+#  url = "https://bsky.app/profile/daxkellie.bsky.social"
+#)
 )
 ```
 

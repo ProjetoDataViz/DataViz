@@ -1,5 +1,5 @@
 ---
-title: "Shandiya Balasubramaniam"
+title: "Guilherme Augusto Veloso"
 include-after-body: _footer.html
 ---
 
@@ -21,7 +21,14 @@ knitr::include_graphics("https://raw.githubusercontent.com/AtlasOfLivingAustrali
 :::
 
 :::{.bio-column-left}
-Shandiya is an evolutionary ecologist with interests in conservation genetics and wildlife disease. She is the Decision Support Program Lead. Her work as a data analyst at the ALA focuses on streamlining reproducible pathways for researchers to access and analyse open data. 
+
+Professor do Departamento de Estatística
+
+ - **Doutorado em Estatística (UFMG)**
+ - **Mestrado em Estatística (UFMG)**
+ - **Bacharelado em Estatística (UFMG)**
+
+Gabinete: 66 (Bloco G – Ala A – 4º andar)
 :::
 :::
 
@@ -32,16 +39,12 @@ Shandiya is an evolutionary ecologist with interests in conservation genetics an
 tags$div(class = "row", style = "display: flex;",
          
 create_button(
-  icon = "fab fa-github fa-xl",
-  url = "http://github.com/shandiya"
+  icon = "fas fa-envelope fa-xl",
+  url = "guilhermev@id.uff.br"
 ),
 create_button(
-  icon = "fas fa-globe fa-xl",
-  url = "https://shandiya.com/"
-),
-create_button(
-  icon = "fab fa-twitter fa-xl",
-  url = "http://twitter.com/ShandiyaB"
+  icon = "fas fa-file-alt fa-xl",
+  url = "http://lattes.cnpq.br/7520289716113534"
 )
 )
 ```

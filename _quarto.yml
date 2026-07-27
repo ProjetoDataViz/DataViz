@@ -29,8 +29,12 @@ website:
         text: " "
       - href: about/index.qmd
         text: "Curso"
-      - href: posts/index.qmd
-        text: "Workshops"
+      - text: "Workshops" 
+        menu:
+          - text: "R / Rstudio"
+            href: posts/index.qmd
+          - text: "Python"
+            href: posts/index.qmd
       #- text: "Procrar:"
       #  menu:
       #  - href: research/citations/index.qmd
@@ -60,7 +64,7 @@ format:
     css: [theme.css, custom_theme.scss]
     toc: true
     code-overflow: scroll
-    linkcolor: "#B8573E"
+    linkcolor: "#4a8fc1"
     include-before-body: _fathom.html
 
 execute:

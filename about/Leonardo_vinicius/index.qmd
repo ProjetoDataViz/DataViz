@@ -13,10 +13,7 @@ source(here("R", "functions.R"))
 :::{.bio-row}
 :::{.bio-column-right}
 
-```{r out.width='275px', out.extra='style="display:block; margin-left:auto; margin-right:auto; clip-path: circle();"'}
-#| echo: false
-knitr::include_graphics("https://raw.githubusercontent.com/AtlasOfLivingAustralia/ala-labs/main/images/people/martin.jpg")
-```
+![](images/Leonardo_vinicius.jpg){fig-align="center" width="275" style="clip-path: circle();"}
 :::
 
 :::{.bio-column-left}
@@ -35,14 +32,14 @@ create_button(
   icon = "fab fa-github fa-xl",
   url = "https://github.com/Delevini"
 ),
-create_button(
-  icon = "fas fa-globe fa-xl",
-  url = "https://martinwestgate.com/"
-),
-create_button(
-  icon = "fab fa-twitter fa-xl",
-  url = "https://twitter.com/westgatecology"
-),
+#create_button(
+#  icon = "fas fa-globe fa-xl",
+#  url = "https://martinwestgate.com/"
+#),
+#create_button(
+#  icon = "fab fa-twitter fa-xl",
+#  url = "https://twitter.com/westgatecology"
+#),
 create_button(
   icon = "fab fa-linkedin-in fa-xl",
   url = "https://www.linkedin.com/in/leonardo-vinicius-dos-santos-ramos/"
