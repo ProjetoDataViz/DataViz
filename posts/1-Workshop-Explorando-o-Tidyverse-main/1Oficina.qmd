@@ -17,7 +17,7 @@ output:
       collapsed: true
     df_print: paged
 categories:
-  - Manipulation
+  - Manipulacao
   - Leitura
   - R
 image: Imagens/work1.png    

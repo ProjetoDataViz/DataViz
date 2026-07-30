@@ -48,7 +48,7 @@ create_team_card(
 create_team_card(
   person_page = "guilherme_veloso/index.html",
   img_src = "../Imagens/orientadores/guilherme_veloso.jpg",
-  name = "Gruilherme Veloso",
+  name = "Guilherme Veloso",
   text = "Orientador"
 )
 )
@@ -61,14 +61,14 @@ create_team_card(
   text = "Monitor"
 ),
 create_team_card(
-  person_page = "Buyan_Amanda/index.html",
-  img_src = "../images/people/amanda.jpg",
+  person_page = "ana_li/index.html",
+  img_src = "../Imagens/monitores/random.jfif",
   name = "Ana Li",
   text = "Monitora"
 ),
 create_team_card(
-  person_page = "Seers_Juliet/index.html",
-  img_src = "../images/people/juliet.jpg",
+  person_page = "gabriel_goncalves/index.html",
+  img_src = "../Imagens/monitores/random.jfif",
   name = "Gabriel Gonçalves",
   text = "Monitor"
 )

@@ -1,0 +1,15 @@
+{
+  "hash": "5d7e2cd58e9e1bb221094fbff4d5bfdc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Ana Li\"\n---\n\n\n\n\n\n### {{< fa circle-user >}} Bio \n\n:::{.bio-row}\n:::{.bio-column-right}\n\n![](images/rafael_erbisti.jpg){fig-align=\"center\" width=\"275\" style=\"clip-path: circle();\"}\n:::\n\n:::{.bio-column-left}\nAluna do curso de graduação em estatística na Universidade Federal Fluminense - UFF em Niterói.\n:::\n:::\n\n:::{.column-body style=\"margin-top:-20px;\"}\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"row\" style=\"display: flex;\">\n<div class=\"button-column\">\n<a href=\"https://github.com/acbuyan\" style=\"border-bottom: none\">\n<button class=\"button-2\">\n<i class=\"fab fa-github fa-xl\"></i>\n</button>\n</a>\n</div>\n</div>\n```\n\n:::\n:::\n\n\n:::\n\n\n### {{< fa newspaper >}} Posts \n\n[1-Workshop-Explorando-o-Tidyverse-main](/posts/1-Workshop-Explorando-o-Tidyverse-main/1Oficina.qmd)<br>\n*O tidyverse é o grupo das bibliotecas mais conhecida e usadas do R, no tidyverse encontramos maneiras de tratar, limpar, manipular e visualizar dados de maneira otimizada, e nesse workshop vamos explorar.*\n\n[2-Workshop-ggplot2-main](/posts/2-Workshop-ggplot2-main/2Oficina.qmd)<br>\n*A melhor maneira de visualizar dados é com um bom gráfico, e o pacote ggplot2 é o que nos ajuda a fazer os mais principais e variados gráficos, com uma sintaxe fácil e simples tal pacote é um dos mais utilizados no R e aqui veremos um pouco dele.*\n\n[3-Workshop-Mapas-Graficos-Interativos-main](/posts/3-Workshop-Mapas-Graficos-Interativos-main/3Oficina.qmd)<br>\n*As vezes queremos visualizar dados de maneira geográfica e no R temos bibliotecas que criam mapas de acordo com de onde e como queremos, aqui veremos um pouco desses pacotes iteressantes para nos localizarmos.* \n\n[4-Workshop-Introducao-RMarkdown-main](/posts/4-Workshop-Introducao-RMarkdown-main/4Oficina.qmd)<br>\n*O R tem várias mecanicas, inclusive uma ferramenta exclusiva de escrever em latex, tendo sinergia com a programação o RMarkdown pode ser uma boa forma de se adaptar a fazer de tupo pelo R/Rstudio.*\n\n[5-Workshop-Relatorios-Interativos-main](/posts/5-Workshop-Relatorios-Interativos-main/5Oficina.qmd)<br>\n*Neste workshop mostramos como fazer relatórios interativos, de forma que o usuário consiga manipular e filtrar a forma com que visualiza os dados e estatísticas presentes em gráficos, tabelas e relatórios.*",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

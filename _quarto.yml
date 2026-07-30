@@ -3,10 +3,11 @@ project:
   render:
     - "*.qmd"
     - "!archive/"
+lang: pt-BR
 
 website:
   title: "Data Viz"
-  description: "Demo projects, experiments, debugging data and so on from the [Atlas of Living Australia (ALA)](https://ala.org.au/)"
+  description: "Projeto / Monitoria do Departamento de Estatística da UFF, como objetivo de agregar a matéria Visualização de dados"
   open-graph:
     image: Imagens/dataviz.png
     image-alt: ""
@@ -34,7 +35,7 @@ website:
           - text: "R / Rstudio"
             href: posts/index.qmd
           - text: "Python"
-            href: posts/index.qmd
+            href: posts_py/index.qmd
       #- text: "Procrar:"
       #  menu:
       #  - href: research/citations/index.qmd

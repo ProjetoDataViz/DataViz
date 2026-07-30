@@ -1,0 +1,62 @@
+<style>
+    /* Wrapper que quebra o limite do container e força 100% da largura da tela */
+    .rodape-wrapper {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        background-color: #0a012a; 
+        
+        /* Empurra o rodapé para baixo e ajusta a distância do conteúdo acima */
+        margin-top: 60px; /* Reduza esse valor se quiser o rodapé mais colado no topo */
+    }
+
+    .endereco-container {
+        color: #ffffff;
+        padding: 40px 20% 20px 20%;
+    }
+
+    .endereco-container h2 {
+        color: #3b71e8; 
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: 0;
+        margin-bottom: 16px;
+        
+        /* Linha divisória abaixo do título */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 10px;
+    }
+
+    .endereco-container p {
+        margin: 8px 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .copyright-bar {
+        background-color: #06001a; 
+        color: #ffffff;
+        padding: 20px 20%;
+        font-size: 0.85rem;
+    }
+    
+    .copyright-bar p {
+        margin: 0;
+    }
+</style>
+
+<div class="rodape-wrapper">
+    <div class="endereco-container">
+        <h2>Endereço</h2>
+        <p>Rua Prof. Marcos Waldemar de Freitas Reis s/n</p>
+        <p>Instituto de Matemática e Estatística – Bloco H – 5o. andar – Ala A</p>
+        <p>São Domingos, Niterói – RJ, CEP 24.210-201</p>
+    </div>
+
+    <div class="copyright-bar">
+        <p>© Copyright 2026. UFF - Todos os direitos reservados.</p>
+    </div>
+</div>

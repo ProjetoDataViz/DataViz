@@ -10,7 +10,7 @@ listing:
   date-format: medium
   categories: true
   page-size: 9
-  fields: [image, author, title, description, date, reading-time]
+  fields: [image, author, title, description, date]
 title-block-banner: "#4a8fc1"
 title-block-banner-color: body
 page-layout: full

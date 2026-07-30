@@ -18,7 +18,7 @@ output:
     df_print: paged
 categories:
   - Dashboard
-  - Manipulation
+  - Manipulacao
   - R
   - Shiny
 image: Imagens/Les_logo.png  

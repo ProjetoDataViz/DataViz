@@ -20,17 +20,34 @@
 
 /* navbar */
 
+.navbar {
+    min-height: 90px; 
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* 2. Aumenta o tamanho da sua logo (imagem) */
+.navbar-brand img {
+    max-height: 87px !important; 
+}
+
+/* 3. Aumenta e ajusta o texto "DataViz" */
+.navbar-title {
+    font-size: 44px !important; 
+    margin-left: 10px; 
+}
+
+
+
 @media screen and (max-width: 952px){
-  /*--    --*/
-  .navbar-brand.navbar-brand-logo {
+  /*.navbar-brand.navbar-brand-logo {
     background-attachment: scroll;
-    content: url("./images/logos/ALA_Logo_Mark-only.png");
+    content: url("./Imagens/Data_logo_branca.png");
     height: 50px;
     margin-top: -13px;
     margin-right: -5px;
   }
-
-}
+}*/
 
 .navbar-logo {
     transform: scale(1.5); 
@@ -69,9 +86,9 @@ a.nav-link {
 }
 
 .navbar-title {
-  display: none; /* inline-block; */ 
+  display: none; !important; /* inline-block; */ 
   padding: 0;
-  content: url("./images/logos/ala-labs-logo-white.png");
+  /*content: url("./Imagens/Data_logo_branca.png");*/
   padding-left: 5px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -79,11 +96,10 @@ a.nav-link {
   margin: auto;
 }
 
-/*.navbar-title:hover {
+.navbar-title:hover {
   opacity:50;
-  content: url("./images/logos/ala-labs-logo-orange.png");
-}*/
-
+}
+}
 @media screen and (max-width: 952px){
   /*--    --*/
   /*.navbar-title {
@@ -148,10 +164,10 @@ a:hover {
 
 /* ALA navbar favicon color */
 
-.bi-ala {
+/*.bi-ala {
   content: url("./images/favicon.ico");
   height:26px;
-}
+}*/
 
 .bi-ala:hover {
   opacity: 50;

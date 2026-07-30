@@ -20,10 +20,10 @@ output:
   pdf_document:
     toc: true
 categories:
-  - Apresentação
+  - Apresentacao
   - Rmarkdown
   - R
-  - Manipulation
+  - Manipulacao
 image: Imagens/Les_logo.png      
 ---
 
