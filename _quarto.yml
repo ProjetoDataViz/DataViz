@@ -15,7 +15,7 @@ website:
     image: Imagens/dataviz.png 
     image-alt: ""
     card-style: summary_large_image
-  site-url: https://labs.ala.org.au/
+  site-url: https://projetodataviz.github.io/Dataviz/
   favicon: Imagens/dataviz.png
   draft-mode: unlinked
   navbar:

@@ -1,1 +1,1 @@
-Sitemap: https://labs.ala.org.au/sitemap.xml
+Sitemap: https://projetodataviz.github.io/Dataviz/sitemap.xml
