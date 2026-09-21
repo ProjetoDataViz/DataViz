@@ -8,6 +8,23 @@
 @import url('_extensions/quarto-ext/fontawesome/assets/css/all.css');
 
 
+.navbar .navbar-nav .nav-link,
+.navbar .navbar-nav .nav-link i {
+    color: #333333 !important; /* Cor principal (ex: cinzento escuro/preto) */
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:hover i {
+    color: #17b3a6 !important; /* Cor idêntica ao verde-água do seu título "DataViz" */
+}
+
+.thumbnail img, 
+div.listing-item-img img {
+    max-height: 120px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
 :root {
   --primary-orange: #020824;
   --secondary-orange: #4a8fc1;

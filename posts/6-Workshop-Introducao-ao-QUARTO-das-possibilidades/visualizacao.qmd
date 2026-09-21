@@ -1,5 +1,5 @@
 ---
-title: "Introdução ao QUARTO das Possibilidades"
+title: "Introdução ao QUARTO das possibilidades"
 author: 
   - name: "Leonardo Vinicius"
 output:
@@ -8,21 +8,22 @@ output:
       before_body: 'header.html'
     theme: 
       bg : '#ffffff'  
-      fg : '#09094f'   
-      primary : '#c6d7e5'
-      secondary: '#c6d7e5'
+      fg : '#140945'   
+      primary : '#678be0'
+      secondary: '#678be0'
     toc: yes
+    toc-title: "Sumário"
     toc_float:
       collapsed: true
     df_print: paged
 categories:
-  - R
   - Relatórios
-  - Quarto(Rstudio)
-image: imagens/quarto_logo.png  
+  - QUARTO(RStudio)
+image: Imagens/quarto_logo.png    
+  
+  
 ---
 
-```{=html}
 <style>
 .sidebar-footer {
   position: fixed;
@@ -32,13 +33,11 @@ image: imagens/quarto_logo.png
   color: #555;
 }
 </style>
-```
 
-::: sidebar-footer
-<strong>Orientador:</strong> Guilherme Veloso
-:::
+<div class="sidebar-footer">
+  <strong>Orientador:</strong> Guilherme Veloso
+</div>
 
-```{=html}
 <style>
 /* Container principal - centraliza tudo */
 .title-container {
@@ -57,6 +56,10 @@ h1.title {
   border-bottom: 2px solid #3498db;
 }
 
+p {
+  text-align: justify;
+}
+
 /* Autor */
 .author {
   display: block;
@@ -72,14 +75,13 @@ h1.title {
   text-align: center !important;
 }
 </style>
-```
+
 
 ```{r , echo=FALSE}
 library(knitr)
 ```
-::: {style="text-align: justify;"}
 
-## **O que é o QUARTO**
+# **O que é o QUARTO**
 
 ![](imagens/quarto_logo.png){fig-align="center" width="49%"}
 
@@ -91,17 +93,17 @@ No quarto você está juntando tudo isso de forma **otimizada e prática**, talv
 
 A ferramenta ainda tem mecânicas de exportação, nos permitindo exportar o nosso arquivo em diversos formatos como: **PDF, PPTX, html, doc**, ou até mesmo publicá-lo na internet através de um domínio.
 
-### história do QUARTO
+## História do QUARTO
 
-![](imagens/art.png){fig-align="center" width="40%"}
+![](imagens/art.png){fig-align="center" width="60%"}
 
 O **Quarto** não surgiu do nada; ele é a evolução direta do *R Markdown*, uma ferramenta que revolucionou a **pesquisa reprodutível** na última década. O *R Markdown* popularizou a ideia de misturar texto narrativo com blocos de código, permitindo gerar relatórios automatizados e eliminando o processo doloroso de [copiar e colar gráficos manualmente]{.underline}. No entanto, todo esse ecossistema estava intrinsecamente amarrado a uma única linguagem: o `R`.
 
-Com a maturação da ciência de dados, os ambientes de trabalho se tornaram **multilíngue**, impulsionados pela adoção massiva de `Python` (*Jupyter*) e `Julia`. A equipe da *RStudio* percebeu que a comunidade precisava de um **sistema de publicação universal**. A dor de criar relatórios dinâmicos não era exclusiva dos usuários de R, e a solução também não deveria ser. Era preciso um sistema que funcionasse [independentemente da linguagem de programação ou da IDE]{.underline} escolhida.
+Com a maturação da ciência de dados, os ambientes de trabalho se tornaram **multilíngue**, impulsionados pela adoção massiva de `Python` `Jupyter` e `Julia`. A equipe da *RStudio* percebeu que a comunidade precisava de um **sistema de publicação universal**. A dor de criar relatórios dinâmicos não era exclusiva dos usuários de R, e a solução também não deveria ser. Era preciso um sistema que funcionasse [independentemente da linguagem de programação ou da IDE]{.underline} escolhida.
 
 Foi para resolver esse gargalo que a **Posit** (o novo nome da *RStudio*) reconstruiu o motor de publicação do zero, lançando o **Quarto**. Em vez de ser apenas um pacote do R, o Quarto nasceu como um [software de linha de comando independente]{.underline}, construído sobre o `Pandoc`. Ele herdou as melhores ideias do seu antecessor, mas com uma **arquitetura agnóstica**. Hoje, ele entrega o mesmo poder de criação de documentos dinâmicos, artigos e *dashboards* de forma nativa para usuários de `R`, `Python`, `Julia` e `Observable JS`, unificando a forma como a ciência de dados é comunicada.
 
-### Como Instalar o QUARTO
+## Como Instalar o QUARTO
 
 A melhor notícia: você provavelmente **já tem o Quarto instalado**!
 
@@ -119,7 +121,7 @@ Para ter certeza de que tudo está funcionando, abra o **Terminal** e digite:
 quarto check
 ```
 
-## **QUARTO das possibilidades**
+# **QUARTO das possibilidades**
 
 ![](imagens/possib.png){fig-align="center" width="30%"}
 
@@ -135,34 +137,34 @@ Estas são algumas das possibilidades do que podemos criar no **QUARTO**. O gran
 
 Imagine que pretende incluir um gráfico no relatório de apresentação para o seu diretor. Em vez de gerar o gráfico no `R`, guardar a imagem, exportar, copiar e colar num ficheiro *Word* para, por fim, gerar um PDF, pode simplesmente utilizar o **QUARTO**. Além de centralizar tudo numa única plataforma, garante a capacidade de reproduzir o trabalho com o mínimo de esforço caso os dados sofram alterações.
 
-*   **Relatórios:** O carro-chefe do Quarto. Permite mesclar texto narrativo com blocos de código executável, gerando documentos em HTML, PDF ou Word onde os gráficos e análises estão sempre sincronizados com os dados mais recentes[cite: 29].
+*   **Relatórios:** O carro-chefe do Quarto. Permite mesclar texto narrativo com blocos de código executável, gerando documentos em HTML, PDF ou Word onde os gráficos e análises estão sempre sincronizados com os dados mais recentes.
     *   *Exemplo prático:* Criar um relatório mensal de vendas. Se a base de dados comercial for atualizada, o relatório compila automaticamente o novo faturamento e reconstrói os gráficos sem necessidade de ajustes manuais.
 
-*   **Apresentações:** Crie diapositivos dinâmicos (como o formato *Revealjs*) sem sair do seu editor (IDE). É a forma mais segura de apresentar resultados, garantindo que o código por trás de um gráfico crucial corra na perfeição diretamente no ecrã[cite: 29].
+*   **Apresentações:** Crie diapositivos dinâmicos (como o formato *Revealjs*) sem sair do seu editor (IDE). É a forma mais segura de apresentar resultados, garantindo que o código por trás de um gráfico crucial corra na perfeição diretamente no ecrã.
     *   *Exemplo prático:* Estruturar os slides para uma reunião corporativa ou uma palestra académica, onde tabelas de resultados e gráficos dinâmicos são processados e exibidos ao vivo.
 
-*   **Dashboards:** Construa painéis visuais organizados em linhas e colunas. Excelente para monitorizar métricas ou consolidar análises visuais numa única interface[cite: 29].
+*   **Dashboards:** Construa painéis visuais organizados em linhas e colunas. Excelente para monitorizar métricas ou consolidar análises visuais numa única interface.
     *   *Exemplo prático:* Um painel gerencial interativo a exibir os principais indicadores de desempenho (KPIs) de uma empresa, como faturamento e metas, consolidados numa única tela.
 
-*   **Websites:** Monte sites completos e blogues estáticos de forma rápida. É uma das ferramentas mais eficientes para alojar um portefólio pessoal de Ciência de Dados e partilhar projetos publicamente[cite: 29].
+*   **Websites:** Monte sites completos e blogues estáticos de forma rápida. É uma das ferramentas mais eficientes para alojar um portefólio pessoal de Ciência de Dados e partilhar projetos publicamente.
     *   *Exemplo prático:* Desenvolver um site institucional para uma organização, uma página de documentação oficial para um pacote de software ou um blog técnico genérico.
 
-*   **Livros:** Junte múltiplos ficheiros `.qmd` numa publicação coesa. Ideal para escrever documentações extensas, compilar materiais didáticos ou organizar sebentas para monitorias académicas com navegação estruturada[cite: 29].
+*   **Livros:** Junte múltiplos ficheiros `.qmd` numa publicação coesa. Ideal para escrever documentações extensas, compilar materiais didáticos ou organizar sebentas para monitorias académicas com navegação estruturada.
     *   *Exemplo prático:* Redigir um manual de integração (*onboarding*) para novos colaboradores de uma empresa ou um livro didático organizado com capítulos independentes por tema.
 
-*   **Documentos Interativos:** Vá além da leitura estática integrando bibliotecas interativas no HTML (como mapas ou gráficos em `Plotly`), permitindo que o utilizador final explore as informações por conta própria[cite: 29].
+*   **Documentos Interativos:** Vá além da leitura estática integrando bibliotecas interativas no HTML (como mapas ou gráficos em `Plotly`), permitindo que o utilizador final explore as informações por conta própria.
     *   *Exemplo prático:* Inserir um mapa demográfico onde o leitor possa passar o rato por cima de diferentes regiões e descobrir instantaneamente informações populacionais e económicas num *tooltip*.
 
-*   **Artigos Científicos e Académicos:** Uma ferramenta indispensável para projetos de investigação e trabalhos de final de curso. O Quarto possui uma forte integração com *LaTeX*, renderizando equações complexas, matrizes de probabilidade e formatação bibliográfica diretamente nos moldes exigidos pelas revistas académicas[cite: 29].
+*   **Artigos Científicos e Académicos:** Uma ferramenta indispensável para projetos de investigação e trabalhos de final de curso. O Quarto possui uma forte integração com *LaTeX*, renderizando equações complexas, matrizes de probabilidade e formatação bibliográfica diretamente nos moldes exigidos pelas revistas académicas.
     *   *Exemplo prático:* Escrever um artigo para submissão numa revista científica internacional, garantindo que a formatação das referências e equações se adapta perfeitamente ao *template* exigido pela editora.
     
-## **QUARTO Relatório**
+# **QUARTO Relatório**
 
-### Inicializando seu Primeiro Documento
+## Inicializando seu Primeiro Documento
 
 Criar um arquivo `.qmd` no RStudio é feito inteiramente por interface gráfica, sem precisar memorizar comandos no terminal.
 
-### 1. O Documento Padrão
+### O Documento Padrão
 
 Para análises, relatórios e artigos individuais, usamos um único arquivo.
 
@@ -173,12 +175,20 @@ Para análises, relatórios e artigos individuais, usamos um único arquivo.
     -   **Format:** HTML (o formato web interativo padrão).
 -   Clique em **Create**.
 
-![](imagens/cria_qmd.png){fig-align="left" width="80%"} ![](imagens/quadro_qmd.png){fig-align="right" width="40%"}
- ![](imagens/inicio.png){fig-align="center" width="70%"}
+
+
+![](imagens/cria_qmd.png){fig-align="left" width="80%"}
+
+![](imagens/quadro_qmd.png){fig-align="right" width="55%"}
+                                             
+![](imagens/inicio.png){fig-align="center" width="70%"}
+
 
 *Nota:* O RStudio vai gerar um arquivo com um cabeçalho YAML preenchido e um texto de exemplo. Apague o texto de exemplo e o arquivo estará pronto para sua análise!
 
-### 2. Para Projetos Maiores (Sites e Livros)
+![](imagens/itens.png){fig-align="center" width="100%"}
+
+### Para Projetos Maiores (Sites e Livros)
 
 Quando um único arquivo não é suficiente, o Quarto oferece estruturas de diretórios prontas.
 
@@ -188,18 +198,18 @@ Quando um único arquivo não é suficiente, o Quarto oferece estruturas de dire
     -   **Quarto Blog**
     -   **Quarto Book**
 
-![](imagens/itens.png){fig-align="center" width="90%"}
 
 ### Maneiras de programar
-![Botões Source e Visual no RStudio](imagens/source_visual.png){fig-align="center" width="50%"}
+![](imagens/source_visual.png){fig-align="center" width="50%"}
 
 **Source (Código-Fonte):** É a visão "crua" e em texto puro do documento. Neste modo, você vê toda a sintaxe do *Markdown* explícita. É ideal quando você precisa de **controle absoluto** sobre a formatação ou quer editar detalhes técnicos do código.
 
 **Visual (Editor Visual):** Funciona como um editor de texto, parecido com o *Microsoft Word* ou *Google Docs*. Ele renderiza a formatação do *Markdown* em tempo real. É o melhor modo para focar **apenas na escrita do texto**, sem precisar lembrar as marcações de código.
 
-#### Cabeçalho
+### Cabeçalho
 
-![](imagens/yml.png){fig-align="left" width="60%"}
+![](imagens/yml.png){fig-align="center" width="80%"}
+
 No **cabeçalho** (também conhecido como *YAML*), pode editar parâmetros como:
 
 - **Título** (`title`)
@@ -218,27 +228,27 @@ format: html
 ---
 ```
 
-além de outras mecânicas mais avançadas.
+Além de outras mecânicas mais avançadas.
 
-#### Corpo do texto
+### Corpo do texto
 
 Você pode incorporar textos formatados no **Quarto**, e o mecanismo de formatação de texto utilizado é o *Markdown*. Embora o *Markdown* tenha sido criado com a intenção de ser de fácil leitura e escrita, ele ainda implica aprender uma nova sintaxe.
 
 ``` r
-## Texto formatado
+Texto formatado:
 
 *itálico* **negrito** ~~cortado~~ `code` sobrescrito^2^ subescrito~2~
 [sublinhado]{.underline} [caixa alta]{.smallcaps}
 
-## Cabeçalhos
+Cabeçalhos:
 
-# Primeiro nível de cabeçalho
+# Capítulo (Título Principal)
 
-## Segundo nível de cabeçalho
+## Subcapítulo (Secção)
 
-### Terceiro nível de cabeçalho
+### Tópico (Sub-secção)
 
-## Listas
+Listas:
 
 -   Item 1 listado como um bullet
 
@@ -250,22 +260,35 @@ Você pode incorporar textos formatados no **Quarto**, e o mecanismo de formata�
 
 2.  Item 2.
 
-## Links e imagens
+Links e imagens:
 
 [palavra/expresssão que ficará associada ao link](https://projetodataviz.github.io/DataViz/)
 
 ![texto opcional de descrição](imagem.png){}
 
-## Tabelas
+Tabelas:
 
 | Cabeçalho primeira coluna | Cabeçalho Segunda Coluna |
 |--------------|---------------|
 | Conteúdo da célula | Conteúdo da célula  |
 | Conteúdo da célula | Conteúdo da célula  |
 ```
+
 É por isso que o **Editor Visual** se torna uma ferramenta de excelência no `RStudio`. Dentro deste modo, pode utilizar os botões do menu superior para inserir elementos estruturais de forma intuitiva, como imagens, tabelas, referências cruzadas e muito mais, sem necessitar de memorizar a sintaxe.
 
-#### Chunks (Blocos de Código)
+### Gerando o **QUARTO**
+
+![](imagens/render.png){fig-align="left" width="25%"}
+
+Já o botão **RENDER** processa e executa o ficheiro `.qmd` por completo. É este comando que compila todo o código e exporta o documento final, de acordo com o formato especificado no cabeçalho (*YAML*).
+
+Além disso, visualizará como ficou o seu relatório, sendo possível ter uma pré-visualização direta e sincronizada em tempo real com a IDE que estiver a utilizar.
+
+Por predefinição, esta pré-visualização abre num separador do seu navegador padrão, mas a configuração pode ser alterada para utilizar o visualizador interno do **RStudio**.
+
+![](imagens/viewer.png){fig-align="center" width="50%"}
+
+## Chunks (Blocos de Código)
 
 Para executar código dentro de um documento **Quarto**, precisamos de inserir um *chunk*. Existem quatro maneiras práticas de o fazer:
 
@@ -276,7 +299,7 @@ Para executar código dentro de um documento **Quarto**, precisamos de inserir u
 
 ![](imagens/chunk.png){fig-align="left" width="20%"}
 
-#### Configurações
+### Configurações
 
 Existem formas de controlar e personalizar os seus *chunks* de código para organizar o documento da melhor maneira possível. As opções de controlo mais importantes são:
 
@@ -311,6 +334,8 @@ Estes controlos são ativados logo no início do *chunk* e através dos símbolo
 
 ### Exemplos de chunks
 
+Os blocos de código (ou chunks) são o coração de um documento dinâmico. No primeiro exemplo, executamos um código real para gerar um gráfico de dispersão com o ggplot2. Mas o verdadeiro poder do Quarto está no controle de exibição através das opções de execução (usando o prefixo #|).
+
 ```r
 library(ggplot2)
 
@@ -321,30 +346,49 @@ airquality |>
   theme_classic()
 
 ```
-```r
-#|
-#|
-#|
-#|
-```
+Mostra o código no documento para fins didáticos, mas não o executa.
 
 ```r
-variavel = 20 + 20 + 20 + 7
+#| eval: false
 ```
 
+Roda o código e mostra o resultado (como uma tabela ou gráfico), mas oculta as linhas de comando. É ideal para relatórios executivos.
+
+```r
+#| echo: false
+```
+
+Limpa o visual do documento ocultando mensagens de aviso que o R costuma soltar.
+
+```r
+#| warning: false
+```
+
+Executa as análises do chunk normalmente, mas esconde apenas o gráfico gerado do relatório final.
+
+```r
+#| fig-show: hide
+```
+
+E se quisermos utilizar uma variável que foi calculada num *chunk* e citá-la diretamente no texto do nosso relatório?
+
+```r
+#| results: hide
+variavel <- 20 + 20 + 20 + 7
+variavel
+```
 ```{r}
 #| include: false
-variavel = "`variavel`"
+variavel = "`r variavel`"
 ```
-
-Chamando a variavel criada na chunk para um texto:
 
 Necessita da variável ter sido criada em uma *chunk* já executada seguindo linha de código, o sufixo da linguagem usada, o nome da variável estando tudo entre  ``` ` ` ```.
-```r
-`r variavel`
+
+```python
+Ai é muito fácil professor é: `r variavel`
 ```
 
-### Execução
+## Execução
 
 RUN 
 
@@ -356,11 +400,8 @@ Estes ícones encontram-se no canto superior direito de cada *chunk*:
 
 O **RUN** no Quarto funciona da mesma forma que num *script* tradicional: executa apenas o bloco selecionado. É uma excelente prática para testar a sequência lógica do seu código e garantir que não **houve** erros de execução passo a passo.
 
-![](imagens/render.png){fig-align="left" width="25%"}
 
-Já o botão **RENDER** processa e executa o ficheiro `.qmd` por completo. É este comando que compila todo o código e exporta o documento final, de acordo com o formato especificado no cabeçalho (*YAML*).
-
-### Formatos de Exportação
+## Formatos de Exportação
 
 - **HTML** (`format: html`): O formato padrão e o mais versátil. Permite incluir elementos dinâmicos, como mapas espaciais, tabelas pesquisáveis e gráficos interativos. O documento abre automaticamente no navegador, sendo perfeito para visualizar o trabalho durante as fases de teste.
 
@@ -371,7 +412,7 @@ Já o botão **RENDER** processa e executa o ficheiro `.qmd` por completo. É es
 
 ![](imagens/format.png){fig-align="center" width="30%"}
 
-## **Publicação**
+# **Publicação**
 
 Mais do que gerar o conteúdo, a **POSIT** (*RSTUDIO*) tem uma maneira de torna-lo público através do **POSIT CONNECT CLOUD**
 
@@ -381,7 +422,7 @@ O **RPubs** foi uma das primeiras soluções da *Posit* para publicação gratui
 
 Com o desenvolvimento do **Quarto**, surgiu posteriormente o **Quarto Pub**, uma plataforma voltada especificamente para a publicação de conteúdos produzidos com *Quarto*, incluindo relatórios, apresentações, sites, blogs e livros.
 
-![](imagens/rpubs.png){fig-align="center" width="50%"}
+![](imagens/rpubs.png){fig-align="center" width="70%"}
 
 Em 2024, a Posit apresentou o Posit Connect Cloud, uma plataforma mais completa para publicação e gerenciamento de conteúdos desenvolvidos em R e Python.
 
@@ -389,11 +430,11 @@ Atualmente, o Quarto Pub está sendo substituído pelo Posit Connect Cloud, send
 
 O [Posit Connect Cloud](https://connect.posit.cloud/) permite publicar e compartilhar diferentes tipos de conteúdo diretamente na web.
 
-### Publish
+## Publish
 
 ![](imagens/publi.png){fig-align="left" width="20%"}
 
-#### Publicação pelo RStudio
+### Publicação pelo RStudio
 
 Uma das formas mais simples de publicar um projeto é utilizar a própria interface do `RStudio`.
 
@@ -409,7 +450,7 @@ Após abrir e compilar (*renderizar*) o seu documento ou projeto Quarto, siga es
 
 No final deste processo, será gerado automaticamente um *link* de acesso que poderá partilhar com outras pessoas.
 
-#### Publicação pelo Terminal
+### Publicação pelo Terminal
 
 Também é perfeitamente possível publicar o seu trabalho diretamente através do **Terminal**.
 
@@ -419,7 +460,7 @@ Navegue até à pasta onde o seu projeto Quarto está localizado e execute o seg
 quarto publish posit-connect-cloud
 ```
 
-#### GitHub Pages
+## GitHub Pages
 
 Outra possibilidade de publicação é através do **GitHub Pages**, um serviço gratuito de alojamento integrado na plataforma do GitHub. Por envolver controlo de versões, este é um processo ligeiramente mais complexo que exigirá os seguintes passos:
 
@@ -429,11 +470,13 @@ Outra possibilidade de publicação é através do **GitHub Pages**, um serviço
 4. Criar um repositório dedicado para o projeto.
 5. Renderizar a apresentação e enviar o código (*fazer push*) para o repositório.
 
-## **CONCLUSÃO**
+# **CONCLUSÃO**
 
-O [QUARTO](https://quarto.org) tem um site própio com um tutorial e informações mais detalhadas sobre a ferramenta  
+**Reprodutibilidade** essa é a palavra chave quando o assunto é a criação de relatórios dinâmicos no **Quarto**. A ferramenta une código, análise e visualização em um único ambiente, permitindo que qualquer pessoa possa auditar e replicar os seus resultados com facilidade. Com isso, garantimos transparência nos processos e transformamos dados complexos em conhecimento acessível para todos.
 
-Galeria
+O [QUARTO](https://quarto.org) tem um site própio com um tutorial e informações mais detalhadas sobre a ferramenta.  
 
+Também possui Uma [Galeria](https://quarto.org/docs/gallery/) com vários modelos de arquivo que você pode baixar e modificar do seu jeito.
 
-:::
+Este Workshop e o site do DataViz foram feitos no **QUARTO**.
+
