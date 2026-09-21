@@ -377,6 +377,7 @@ E se quisermos utilizar uma variável que foi calculada num *chunk* e citá-la d
 variavel <- sqrt(49)
 variavel
 ```
+
 ```{r}
 #| include: false
 variavel = "`r variavel`"
