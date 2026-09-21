@@ -374,7 +374,7 @@ E se quisermos utilizar uma variável que foi calculada num *chunk* e citá-la d
 
 ```r
 #| results: hide
-variavel <- 20 + 20 + 20 + 7
+variavel <- sqrt(49)
 variavel
 ```
 ```{r}
@@ -385,7 +385,7 @@ variavel = "`r variavel`"
 Necessita da variável ter sido criada em uma *chunk* já executada seguindo linha de código, o sufixo da linguagem usada, o nome da variável estando tudo entre  ``` ` ` ```.
 
 ```python
-Ai é muito fácil professor é: `r variavel`
+A raiz quadrada de 49 é: `r variavel`
 ```
 
 ## Execução
